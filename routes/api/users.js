@@ -6,6 +6,8 @@ const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 router.post('/register', (req,res) => {
     User.findOne({email: req.body.email})
@@ -17,7 +19,7 @@ router.post('/register', (req,res) => {
                     handle: req.body.handle,
                     email: req.body.email,
                     passwordDigest: req.body.password,
-                    roleId: req.body.roleId
+                    role: req.body.role
                 })
 
                 bcrypt.genSalt(10, (err, salt)=>{
@@ -51,7 +53,7 @@ router.post('/login', (req,res) => {
                             id: user.id,
                             handle: user.handle,
                             email: user.email,
-                            roleId: user.roleId
+                            role: user.role
                         }
                         jwt.sign(
                             payload,
@@ -76,7 +78,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       id: req.user.id,
       handle: req.user.handle,
       email: req.user.email,
-      roleId: req.user.roleId
+      role: req.user.role
     });
   })
 
