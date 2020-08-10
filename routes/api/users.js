@@ -36,11 +36,31 @@ router.post('/register', (req,res) => {
                         if (err) throw err;
                         newUser.passwordDigest = hash;
                         newUser.save()
-                            .then((user)=>res.json(user))
+                            .then((user)=>{
+                                
+                                const payload = {
+                                    id: user.id,
+                                    handle: user.handle,
+                                    email: user.email,
+                                    role: user.role }
+                                
+                                
+                                jwt.sign(
+                                    payload,
+                                    keys.secretOrKey,
+                                    {expiresIn: 3600},
+                                    (err,token) => {
+                                        res.json({
+                                            success: true,
+                                            token: "Bearer " + token 
+                                        });
+                                    }
+                                )
+
+                            })
                             .catch((error)=>res.json(error))
                     })
                 })
-                
             }
         })
 })
