@@ -31,15 +31,11 @@ module.exports = function validateRegisterInput(data) {
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = 'Password must be at least 6 characters';
+    errors.password = 'Password must be at least 6 characters and no more than 30 characters';
   }
 
-  if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Confirm Password field is required';
-  }
-
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = 'Passwords must match';
+  if (!Validator.equals(data.role, "shipper") && !Validator.equals(data.role, "carrier")) {
+      errors.role = "Role must be either 'shipper' or 'carrier'."
   }
 
   return {
