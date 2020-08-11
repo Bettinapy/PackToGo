@@ -1,23 +1,22 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+// import './login.scss';
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: "",
       password: "",
       errors: {},
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-    }
+    // if (nextProps.currentUser === true) {
+    // }
 
     this.setState({ errors: nextProps.errors });
   }
@@ -32,7 +31,7 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let user = {
+    const user = {
       email: this.state.email,
       password: this.state.password,
     };
@@ -52,7 +51,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
