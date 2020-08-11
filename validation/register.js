@@ -34,8 +34,14 @@ module.exports = function validateRegisterInput(data) {
     errors.password = 'Password must be at least 6 characters and no more than 30 characters';
   }
 
+  // added by george 8-11-2020
+  if (Validator.isEmpty(data.role)) {
+    errors.role = "Role is required"
+  }
+  // finished by george 8-11-2020
+
   if (!Validator.equals(data.role, "shipper") && !Validator.equals(data.role, "carrier")) {
-      errors.role = "Role must be either 'shipper' or 'carrier'."
+      errors.role = "Role must be either 'shipper' or 'carrier'"
   }
 
   return {
