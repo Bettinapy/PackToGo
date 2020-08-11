@@ -52,9 +52,11 @@ Yuanyuan Zhou, George Rodnikov, Brandon Kim, Jonathan Su
 * Post Schema and Sample State - Jon
 
 ### August 11
-* User auth
-* hosting on Heroku - All
-* Post
+* User auth frontend - Brandon
+* Carrier Post and Shipper Post backend: Model, Validation, Routes - George and Jon
+* Carrier Post and Shipper Post frontend - Yuan
+* Search backend: Model, Validation, Routes - George
+* Map - Jon
 
 ### August 12
 * Post 
