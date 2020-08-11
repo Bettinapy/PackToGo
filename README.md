@@ -53,10 +53,10 @@ Yuanyuan Zhou, George Rodnikov, Brandon Kim, Jonathan Su
 
 ### August 11
 * User auth frontend - Brandon
-* Carrier Post and Shipper Post backend: Model, Validation, Routes - George and Jon
+* Carrier Post and Shipper Post backend: Model, Validation, Routes - George
 * Carrier Post and Shipper Post frontend - Yuan
-* Search backend: Model, Validation, Routes - George
-* Map - Jon
+* Search backend: Model, Validation, Routes - Jon
+* Map - George
 
 ### August 12
 * Post 
