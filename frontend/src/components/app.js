@@ -18,6 +18,7 @@ const App = () => (
 
       <ProtectedRoute exact path="/carriers/posts/create" component={CreateCarrierPostFormContainer} />
       <ProtectedRoute exact path="/carriers/posts/:carrierPostId/edit" component={EditCarrierPostFormContainer} />
+    
     </Switch>
   </div>
 );
