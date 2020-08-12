@@ -19,10 +19,14 @@ router.post('/register', (req,res) => {
 
 
 
-    User.findOne({email: req.body.email})
+    User.findOne({$or: [{handle: req.body.handle},{email: req.body.email}]})
         .then(user => {
             if (user) {
-                return res.status(400).json({email: "A user is already registered with that email"})
+                if (user.email === req.body.email) {
+                    return res.status(400).json({email: "A user is already registered with that email"});
+                } else { 
+                    return res.status(400).json({handle: "A user is already registered with that username"});
+                }
             } else {
                 const newUser = new User({
                     handle: req.body.handle,
@@ -116,6 +120,22 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       role: req.user.role
     });
   })
+
+
+router.get('/testquery', (req,res) => {
+    User.findOne({$or: [{handle: req.body.handle},{email: req.body.email}]})
+        .then(user => {
+            if (user) {
+                    if (user.email === req.body.email) {
+                        return res.status(400).json({email: "A user is already registered with that email"});
+                    } else { 
+                        return res.status(400).json({handle: "A user is arlready registered with that username"});
+                    } }
+                    else {
+                        return res.status(200).json({allgood: "All good"});
+                    }
+                })
+        })
 
 module.exports = router;
 // finished by george for user-auth-backend 8-10-2020
