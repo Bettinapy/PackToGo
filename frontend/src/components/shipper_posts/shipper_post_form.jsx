@@ -9,11 +9,11 @@ class ShipperPostForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+
     this.props
       .submitShipperForm(this.state)
       .then((action) => {
-        debugger;
+    ;
         return this.props.history.push(
           `/shippers/posts/${action.shipperPost.data._id}`
         );
@@ -55,7 +55,7 @@ class ShipperPostForm extends React.Component {
     const maxWeightErr = (this.props.errors.maxWeight ? (
       <p>{this.props.errors.maxWeight}</p>
     ) : (<></>))
-    debugger
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="origin">

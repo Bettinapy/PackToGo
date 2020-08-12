@@ -7,7 +7,7 @@ import ShipperPostList from './shipper_post_list';
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
     return{
         shipper_posts: Object.values(state.shipper_posts),
         errors: state.errors,

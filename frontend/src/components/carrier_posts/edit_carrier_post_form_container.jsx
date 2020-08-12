@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     const newDate = new Date(carrier_post.travelDate);
     carrier_post.travelDate  = newDate.toJSON().slice(0, 10);
   }
-  debugger
+
   return {
     carrier_post: carrier_post,
     errors: state.errors.session || {

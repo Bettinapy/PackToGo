@@ -20,7 +20,7 @@ export const receiveShipperPost = (shipperPost) => {
 };
 
 export const removeShipperPost = (shipperPostId) => {
-    debugger
+ 
     return {
         type: REMOVE_SHIPPERPOST,
         shipperPostId

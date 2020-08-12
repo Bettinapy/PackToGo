@@ -4,7 +4,7 @@ import { clearErrors } from '../../actions/session_actions';
 import ShipperPostForm from './shipper_post_form';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return {
     shipper_post: Object.values(state.shipper_posts)[0] || {
       origin: "",

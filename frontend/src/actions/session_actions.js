@@ -44,11 +44,11 @@ export const signUp = user => dispatch => {
         localStorage.setItem("jwtToken", token);
         APIUtil.setAuthToken(token);
         const decodedUser = jwt_decode(token);
-        debugger;
+      
         dispatch(receiveCurrentUser(decodedUser));
       })
       .catch((error) => {
-        debugger;
+      
         return dispatch(receiveSessionErrors(error.response.data));
       });
 }

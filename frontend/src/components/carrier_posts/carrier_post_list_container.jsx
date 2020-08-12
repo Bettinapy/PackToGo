@@ -7,7 +7,7 @@ import CarrierPostList from './carrier_post_list';
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
     return{
         carrier_posts: Object.values(state.carrier_posts),
         errors: state.errors,

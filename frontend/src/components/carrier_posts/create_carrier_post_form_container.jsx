@@ -4,7 +4,7 @@ import { clearErrors } from '../../actions/session_actions';
 import CarrierPostForm from './carrier_post_form';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return {
     carrier_post: Object.values(state.carrier_posts)[0] || {
       origin: "",

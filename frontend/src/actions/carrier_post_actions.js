@@ -21,7 +21,7 @@ export const receiveCarrierPost = (carrierPost) => {
 };
 
 export const removeCarrierPost = (carrierPostId) => {
-    debugger
+  
     return {
         type: REMOVE_CARRIERPOST,
         carrierPostId

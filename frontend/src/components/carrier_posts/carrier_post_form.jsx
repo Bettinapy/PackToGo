@@ -9,11 +9,11 @@ class CarrierPostForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+   
     this.props
       .submitCarrierForm(this.state)
       .then((action) => {
-        debugger;
+       ;
         return this.props.history.push(
           `/carriers/posts/${action.carrierPost.data._id}`
         );
@@ -63,7 +63,7 @@ class CarrierPostForm extends React.Component {
     const maxWeightErr = (this.props.errors.maxWeight ? (
       <p>{this.props.errors.maxWeight}</p>
     ) : (<></>))
-    debugger
+   
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="origin">

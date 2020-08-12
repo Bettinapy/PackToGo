@@ -9,12 +9,12 @@ export const getShipperPost = (shipperPostId) => {
 };
 
 export const createShipperPost = (shipperPostData) => {
-    debugger
+
     return axios.post("/api/shipper_posts/create", shipperPostData)
 };
 
 export const updateShipperPost = (shipperPostData) => {
-    debugger
+
     return axios.put(`/api/shipper_posts/${shipperPostData._id}`, shipperPostData)
 };
 

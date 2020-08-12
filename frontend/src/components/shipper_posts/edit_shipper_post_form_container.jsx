@@ -7,7 +7,7 @@ import ShipperPostForm from "./shipper_post_form";
 
 const mapStateToProps = (state, ownProps) => {
   const shipper_post = state.shipper_posts[ownProps.match.params.shipperPostId];
-  debugger
+
   return {
     shipper_post: shipper_post,
     errors: state.errors.session || {
