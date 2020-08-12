@@ -15,7 +15,7 @@ class CarrierPostList extends React.Component {
 
     const carrierPostList = (this.props.carrier_posts.length !==0 ? (
         this.props.carrier_posts.map(carrier_post => (
-            <CarrierPostListItem key={carrier_post.carrier_id} carrier_post={carrier_post}/>
+            <CarrierPostListItem key={carrier_post._id} carrier_post={carrier_post}/>
         ))
     ):(<></>))
 
