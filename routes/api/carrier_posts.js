@@ -46,7 +46,6 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req,re
 })
 
 router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) => {
-
     const { errors, isValid } = validateCarrierPostUpdate(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
@@ -58,7 +57,14 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
                 return res.status(401).json({user: "Only the creator of the post can edit it"})
             } else {
                 CarrierPost.findByIdAndUpdate(req.params.id, req.body, {new:true})
-                    .then(post => res.json(post))
+                    .then(post => {
+                        const newDate = new Date(post.travelDate);
+                        post.travelDate = newDate.getFullYear() + "-" +
+                            (newDate.getMonth() + 1) + "-" +
+                            (newDate.getDate() + 1);
+                        console.log(post.travelDate)
+                        res.json(post)
+                    })
                     .catch(err => res.json(err))
             }
         })
@@ -86,6 +92,11 @@ router.get('/:id', (req,res) => {
             //yuan edited on 08/11 for frontend render
             //onePost[post.id] = post;
             //res.json(onePost)})
+            // const newDate = new Date(post.travelDate);
+            // post.travelDate = newDate.getFullYear() + "-" +
+            //     (newDate.getMonth() + 1) + "-" +
+            //     (newDate.getDate() + 1);
+            // console.log(post.travelDate)
             res.json(post)})
         .catch(err => res.json(err))
 });

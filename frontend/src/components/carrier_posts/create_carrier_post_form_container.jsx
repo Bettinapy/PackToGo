@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
       destination: "",
       travelDate: new Date().toJSON().slice(0, 10),
       fee: 0,
-      parcelContents: "",
       maxWeight: 0,
       transportation: "flight",
       carrierId: state.session.user.id,
@@ -19,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
     errors: state.errors.session || {
       origin: "",
       destination: "",
-      parcelContents: "",
       travelDate: "",
       fee: "",
       maxWeight:""

@@ -65,11 +65,11 @@ class CarrierPostShow extends React.Component{
               <p>{this.props.carrier_post.fee}</p>
             
             </div>
-            <div>
+            {/* <div>
               <h3>Parcel Contents</h3>
               <p>{this.props.carrier_post.parcelContents}</p>
            
-            </div>
+            </div> */}
             <div>
               <h3>Max Weight</h3>
               <p>{this.props.carrier_post.maxWeight}</p>

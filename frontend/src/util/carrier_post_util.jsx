@@ -14,7 +14,8 @@ export const createCarrierPost = (carrierPostData) => {
 };
 
 export const updateCarrierPost = (carrierPostData) => {
-    return axios.put(`/api/carrier_posts/${carrierPostData.id}`, carrierPostData)
+    debugger
+    return axios.put(`/api/carrier_posts/${carrierPostData._id}`, carrierPostData)
 };
 
 export const deleteCarrierPost = (carrierPostId) => {

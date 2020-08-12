@@ -7,7 +7,10 @@ import CarrierPostForm from "./carrier_post_form";
 
 const mapStateToProps = (state, ownProps) => {
   const carrier_post = state.carrier_posts[ownProps.match.params.carrierPostId];
- 
+  if (typeof carrier_post !== 'undefined') {
+    const newDate = new Date(carrier_post.travelDate);
+    carrier_post.travelDate  = newDate.toJSON().slice(0, 10);
+  }
   debugger
   return {
     carrier_post: carrier_post,

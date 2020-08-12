@@ -48,9 +48,9 @@ class CarrierPostForm extends React.Component {
       <p>{this.props.errors.destination}</p>
     ) : (<></>))
 
-    const parcelContentsErr = (this.props.errors.parcelContents ? (
-      <p>{this.props.errors.parcelContents}</p>
-    ) : (<></>))
+    // const parcelContentsErr = (this.props.errors.parcelContents ? (
+    //   <p>{this.props.errors.parcelContents}</p>
+    // ) : (<></>))
 
     const travelDateErr = (this.props.errors.travelDate ? (
       <p>{this.props.errors.travelDate}</p>
@@ -63,11 +63,11 @@ class CarrierPostForm extends React.Component {
     const maxWeightErr = (this.props.errors.maxWeight ? (
       <p>{this.props.errors.maxWeight}</p>
     ) : (<></>))
-
+    debugger
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="origin">
-          Origin
+          Origin&#42;
           <input
             type="text"
             value={this.state.origin}
@@ -77,7 +77,7 @@ class CarrierPostForm extends React.Component {
         {originErr}
 
         <label htmlFor="destination">
-          Destination
+          Destination&#42;
           <input
             type="text"
             value={this.state.destination}
@@ -87,8 +87,7 @@ class CarrierPostForm extends React.Component {
         {destinationErr}
 
         <label htmlFor="travel-date">
-          {" "}
-          Travel Date
+          Travel Date&#42;
           <input
             type="date"
             id="travel-date"
@@ -100,7 +99,7 @@ class CarrierPostForm extends React.Component {
         {travelDateErr}
 
         <label htmlFor="transportation">
-          transportation
+          Transportation&#42;
           <select
             id="transportation"
             onChange={this.handleChange("transportation")}
@@ -144,7 +143,7 @@ class CarrierPostForm extends React.Component {
         </label>
 
         <label htmlFor="fee">
-          fee
+          Fee&#42;($)
           <input
             type="number"
             min="1"
@@ -155,25 +154,25 @@ class CarrierPostForm extends React.Component {
         </label>
         {feeErr}
 
-        <label htmlFor="parcel-contents">
-          Parcel Contents
+        {/* <label htmlFor="parcel-contents">
+          Parcel Contents&#42;
           <input
             type="text"
             value={this.state.parcelContents}
             onChange={this.handleChange("parcelContents")}
           />
         </label>
-        {parcelContentsErr}
+        {parcelContentsErr} */}
 
         <label htmlFor="max-weight">
-          Max Weight
+          Max Weight&#42;(g)
           <input
             type="number"
             min="1"
             step="any"
             value={this.state.maxWeight}
             onChange={this.handleChange("maxWeight")}
-          />
+          /> 
         </label>
         {maxWeightErr}
 
