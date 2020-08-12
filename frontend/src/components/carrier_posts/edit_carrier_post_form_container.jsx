@@ -1,1 +1,58 @@
+import React from 'react';
 import { connect } from "react-redux";
+import { updateCarrierPost, fetchCarrierPost } from "../../actions/carrier_post_actions";
+import { clearErrors } from "../../actions/session_actions";
+import CarrierPostForm from "./carrier_post_form";
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    question: state.carrier_posts[ownProps.match.params.carrierPostId],
+    errors: state.errors.session.session_error || {
+      origin: "",
+      destination: "",
+    },
+    formType: "Update Carrier Post",
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    requestCarrierPost: (carrierPostId) => dispatch(fetchCarrierPost(carrierPostId)),
+    submitCarrierForm: (carrierPost) => dispatch(updateCarrierPost(carrierPost)),
+    clearErrors: () => dispatch(clearErrors()),
+  };
+};
+
+class EditCarrierPostForm extends React.Component {
+  componentDidMount() {
+    return this.props.requestCarrierPost(this.props.match.params.carrierPostId);
+  }
+  render() {
+    const {
+      history,
+      match,
+      carrier_post,
+      errors,
+      formType,
+      submitCarrierForm,
+      clearErrors,
+    } = this.props;
+
+    if (!carrier_post) return null;
+
+    return (
+      <CarrierPostForm
+        errors={errors}
+        carrier_post={carrier_post}
+        formType={formType}
+        history={history}
+        match={match}
+        submitCarrierForm={submitCarrierForm}
+        clearErrors={clearErrors}
+      />
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditCarrierPostForm);
