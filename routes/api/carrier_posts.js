@@ -33,12 +33,10 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req,re
         travelDate: req.body.travelDate,
         transportation: req.body.transportation,
         fee: req.body.fee,
-        parcelContents: req.body.parcelContents,
+        //parcelContents: req.body.parcelContents,
         maxWeight: req.body.maxWeight           
 
     });
-
-    debugger;
 
     newCarrierPost.save()
         .then(post => res.json(post))
@@ -79,12 +77,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req,res) => {
-    const onePost = {};
+    //const onePost = {};
+    //let postCopy = {};
+    //let myDate;
 
     CarrierPost.findById(req.params.id)
         .then(post => {
-            onePost[post.id] = post;
-            res.json(onePost)})
+            //postCopy = Object.assign(post);
+            //delete postCopy.travelDate;
+            //onePost = post;
+            //onePost[post.id].travelDate = "hello";
+            //delete onePost[post.id].travelDate;
+            res.json(post)
+        })
         .catch(err => res.json(err))
 });
 
@@ -93,7 +98,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
     CarrierPost.findById(req.params.id)
         .then(post => {
             if (post.carrierId.toString() !== req.user.id.toString()) {
-                return res.status(401).json({user: "Only the creator of the post can edit it"})
+                return res.status(401).json({user: "Only the creator of the post can delete it"})
             } else {
                 CarrierPost.findByIdAndDelete(req.params.id)
                     .then(post => res.json({}))

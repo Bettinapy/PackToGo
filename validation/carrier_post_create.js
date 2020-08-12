@@ -9,7 +9,7 @@ module.exports = function validateCarrierPostCreate(data) {
   data.origin = validText(data.origin) ? data.origin : '';
   data.destination = validText(data.destination) ? data.destination : '';
   data.transportation = validText(data.transportation) ? data.transportation : '';
-  data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
+  //data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
 
 
   if (Validator.isEmpty(data.origin)) {
@@ -24,9 +24,9 @@ module.exports = function validateCarrierPostCreate(data) {
     errors.transportation = 'Mode of transportation required';
     }
 
-    if (Validator.isEmpty(data.parcelContents)) {
-        errors.parcelContents = 'Parcel contents are required';
-    }
+    // if (Validator.isEmpty(data.parcelContents)) {
+    //     errors.parcelContents = 'Parcel contents are required';
+    // }
 
     // Travel date validators
 
@@ -59,7 +59,7 @@ module.exports = function validateCarrierPostCreate(data) {
         if (data.fee < 0) {
             errors.fee = "Fee cannot be negative"
         }
-        
+
         if (Validator.isEmpty(data.fee)) {
             errors.fee = 'Fee required';
         }
