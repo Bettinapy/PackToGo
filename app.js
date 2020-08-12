@@ -19,6 +19,10 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 // finished by george for user-auth-backend 8-10-2020
 
+// added by george for carrier-post-model 8-11-2020
+const carrierPosts = require("./routes/api/carrier_posts");
+// finished by george for carrier-post-model 8-11-2020
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -41,6 +45,10 @@ require('./config/passport')(passport);
 
 app.use("/api/users",users);
 // finished by george for user-auth-backend 8-10-2020
+
+// added by george for carrier-post-model 8-11-2020
+app.use("/api/carrier_posts",carrierPosts);
+// finished by george for carrier-post-model 8-11-2020
 
 const port = process.env.PORT || 5000;
 
