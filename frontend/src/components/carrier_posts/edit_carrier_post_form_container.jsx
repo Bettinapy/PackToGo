@@ -11,9 +11,13 @@ const mapStateToProps = (state, ownProps) => {
   debugger
   return {
     carrier_post: carrier_post,
-    errors: state.errors.session.session_error || {
+    errors: state.errors.session || {
       origin: "",
       destination: "",
+      parcelContents: "",
+      travelDate: "",
+      fee: "",
+      maxWeight: ""
     },
     formType: "Update Carrier Post",
   };

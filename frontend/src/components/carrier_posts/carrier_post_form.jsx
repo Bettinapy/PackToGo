@@ -40,6 +40,30 @@ class CarrierPostForm extends React.Component {
 
   // will use Google Map Autocomplete later
   render() {
+    const originErr = (this.props.errors.origin ? (
+      <p>{this.props.errors.origin}</p>
+    ) : (<></>))
+
+    const destinationErr = (this.props.errors.destination ? (
+      <p>{this.props.errors.destination}</p>
+    ) : (<></>))
+
+    const parcelContentsErr = (this.props.errors.parcelContents ? (
+      <p>{this.props.errors.parcelContents}</p>
+    ) : (<></>))
+
+    const travelDateErr = (this.props.errors.travelDate ? (
+      <p>{this.props.errors.travelDate}</p>
+    ) : (<></>))
+
+    const feeErr = (this.props.errors.fee ? (
+      <p>{this.props.errors.fee}</p>
+    ) : (<></>))
+
+    const maxWeightErr = (this.props.errors.maxWeight ? (
+      <p>{this.props.errors.maxWeight}</p>
+    ) : (<></>))
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="origin">
@@ -50,6 +74,7 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("origin")}
           />
         </label>
+        {originErr}
 
         <label htmlFor="destination">
           Destination
@@ -59,6 +84,7 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("destination")}
           />
         </label>
+        {destinationErr}
 
         <label htmlFor="travel-date">
           {" "}
@@ -71,6 +97,7 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("travelDate")}
           ></input>
         </label>
+        {travelDateErr}
 
         <label htmlFor="transportation">
           transportation
@@ -115,6 +142,7 @@ class CarrierPostForm extends React.Component {
             </option>
           </select>
         </label>
+
         <label htmlFor="fee">
           fee
           <input
@@ -125,6 +153,8 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("fee")}
           />
         </label>
+        {feeErr}
+
         <label htmlFor="parcel-contents">
           Parcel Contents
           <input
@@ -133,6 +163,8 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("parcelContents")}
           />
         </label>
+        {parcelContentsErr}
+
         <label htmlFor="max-weight">
           Max Weight
           <input
@@ -143,6 +175,8 @@ class CarrierPostForm extends React.Component {
             onChange={this.handleChange("maxWeight")}
           />
         </label>
+        {maxWeightErr}
+
         <input type="submit" value="submit" />
       </form>
     );

@@ -41,35 +41,42 @@ class CarrierPostShow extends React.Component{
           ) : (
             <></>
           );
+      
 
         return (
           <div>
             <div>
               <h3>Origin</h3>
               <p>{this.props.carrier_post.origin}</p>
+              
             </div>
             <div>
               <h3>Destination</h3>
               <p>{this.props.carrier_post.destination}</p>
+              
             </div>
             <div>
               <h3>Travel Date</h3>
               <p>{this.props.carrier_post.travelDate}</p>
+            
             </div>
             <div>
               <h3>fee</h3>
               <p>{this.props.carrier_post.fee}</p>
+            
             </div>
             <div>
               <h3>Parcel Contents</h3>
               <p>{this.props.carrier_post.parcelContents}</p>
+           
             </div>
             <div>
               <h3>Max Weight</h3>
               <p>{this.props.carrier_post.maxWeight}</p>
+         
             </div>
             <div>
-              <h3>transportation</h3>
+              <h3>Transportation</h3>
               <p>{this.props.carrier_post.transportation}</p>
             </div>
             <div>

@@ -16,9 +16,13 @@ const mapStateToProps = (state, ownProps) => {
       transportation: "flight",
       carrierId: state.session.user.id,
     },
-    errors: state.errors.session.session_error || {
+    errors: state.errors.session || {
       origin: "",
       destination: "",
+      parcelContents: "",
+      travelDate: "",
+      fee: "",
+      maxWeight:""
     },
     formType: "Create Carrier Post",
   };

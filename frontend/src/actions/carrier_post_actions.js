@@ -38,24 +38,24 @@ export const fetchCarrierPosts = () => {
 export const fetchCarrierPost = (carrierPostId) => {
     return dispatch => {
         return CarrierPostUtil.getCarrierPost(carrierPostId)
-            .then((payload) => dispatch(receiveCarrierPost(payload)))
-            .catch((err) => dispatch(receiveSessionErrors(err.response.data)))
+            .then((payload) => dispatch(receiveCarrierPost(payload)),
+                  (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
 }
 
 export const createCarrierPost = (carrierPost) => {
     return dispatch => {
         return CarrierPostUtil.createCarrierPost(carrierPost)
-            .then((carrierPost) => dispatch(receiveCarrierPost(carrierPost)))
-            .catch((err) => dispatch(receiveSessionErrors(err.response.data)))
+            .then((carrierPost) => dispatch(receiveCarrierPost(carrierPost)),
+                  (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
 }
 
 export const updateCarrierPost = (carrierPost) => {
     return dispatch => {
         return CarrierPostUtil.updateCarrierPost(carrierPost)
-            .then((carrierPost) => dispatch(receiveCarrierPost(carrierPost)))
-            .catch((err) => dispatch(receiveSessionErrors(err.response.data)))
+            .then((carrierPost) => dispatch(receiveCarrierPost(carrierPost)),
+                  (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
 }
 
