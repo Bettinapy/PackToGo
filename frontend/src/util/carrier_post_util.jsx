@@ -9,12 +9,12 @@ export const getCarrierPost = (carrierPostId) => {
 };
 
 export const createCarrierPost = (carrierPostData) => {
-    debugger
+
     return axios.post("/api/carrier_posts/create", carrierPostData)
 };
 
 export const updateCarrierPost = (carrierPostData) => {
-    debugger
+
     return axios.put(`/api/carrier_posts/${carrierPostData._id}`, carrierPostData)
 };
 

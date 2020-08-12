@@ -10,6 +10,10 @@ import CreateCarrierPostFormContainer from './carrier_posts/create_carrier_post_
 import EditCarrierPostFormContainer from './carrier_posts/edit_carrier_post_form_container';
 import CarrierPostShowContainer from './carrier_posts/carrier_post_show_container';
 import CarrierPostListContainer from './carrier_posts/carrier_post_list_container';
+import CreateShipperPostFormContainer from './shipper_posts/create_shipper_post_form_container';
+import EditShipperPostFormContainer from './shipper_posts/edit_shipper_post_form_container';
+import ShipperPostShowContainer from './shipper_posts/shipper_post_show_container';
+import ShipperPostListContainer from './shipper_posts/shipper_post_list_container';
 
 
 const App = () => (
@@ -22,9 +26,13 @@ const App = () => (
 
       <ProtectedRoute exact path="/carriers/posts/create" component={CreateCarrierPostFormContainer} />
       <ProtectedRoute exact path="/carriers/posts/:carrierPostId/edit" component={EditCarrierPostFormContainer} />
+      <ProtectedRoute exact path="/shippers/posts/create" component={CreateShipperPostFormContainer} />
+      <ProtectedRoute exact path="/shippers/posts/:shipperPostId/edit" component={EditShipperPostFormContainer} />
 
       <Route exact path="/carriers/posts/:carrierPostId" component={CarrierPostShowContainer} />
       <Route exact path="/carriers/posts" component={CarrierPostListContainer} />
+      <Route exact path="/shippers/posts/:shipperPostId" component={ShipperPostShowContainer} />
+      <Route exact path="/shippers/posts" component={ShipperPostListContainer} />
 
     </Switch>
   </div>
