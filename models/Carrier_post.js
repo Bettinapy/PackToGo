@@ -30,10 +30,10 @@ const CarrierPostSchema = new Schema({
         type: Number,
         required: true
     },
-    parcelContents: {
-        type: String,
-        required: true
-    },
+    // parcelContents: {
+    //     type: String,
+    //     required: true
+    // },
     maxWeight: {
         type: Number,
         required: true

@@ -33,7 +33,7 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req,re
         travelDate: req.body.travelDate,
         transportation: req.body.transportation,
         fee: req.body.fee,
-        parcelContents: req.body.parcelContents,
+        //parcelContents: req.body.parcelContents,
         maxWeight: req.body.maxWeight           
 
     });
@@ -77,7 +77,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req,res) => {
-    const onePost = {};
+    //const onePost = {};
     //let postCopy = {};
     //let myDate;
 
@@ -85,10 +85,10 @@ router.get('/:id', (req,res) => {
         .then(post => {
             //postCopy = Object.assign(post);
             //delete postCopy.travelDate;
-            onePost[post.id] = post;
+            //onePost = post;
             //onePost[post.id].travelDate = "hello";
             //delete onePost[post.id].travelDate;
-            res.json(onePost)
+            res.json(post)
         })
         .catch(err => res.json(err))
 });

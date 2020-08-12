@@ -65,12 +65,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req,res) => {
-    const onePost = {};
+    //const onePost = {};
 
     ShipperPost.findById(req.params.id)
         .then(post => {
-            onePost[post.id] = post;
-            res.json(onePost)
+            //onePost[post.id] = post;
+            res.json(post)
         })
         .catch(err => res.json(err))
 });

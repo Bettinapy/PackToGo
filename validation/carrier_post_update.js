@@ -27,12 +27,12 @@ module.exports = function validateCarrierPostUpdate(data) {
         }
     }
 
-    if (data.parcelContents !== undefined) {
-        data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
-        if (Validator.isEmpty(data.parcelContents)) {
-            errors.parcelContents = 'Parcel contents are required';
-        }
-    }
+    // if (data.parcelContents !== undefined) {
+    //     data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
+    //     if (Validator.isEmpty(data.parcelContents)) {
+    //         errors.parcelContents = 'Parcel contents are required';
+    //     }
+    // }
     
     // Travel date validators
 
