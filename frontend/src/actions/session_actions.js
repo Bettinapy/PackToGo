@@ -4,6 +4,8 @@ import jwt_decode from 'jwt-decode';
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+// Add clear errors to clear errors on form
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const logoutUser = () => {
     return ({
@@ -23,7 +25,11 @@ export const receiveSessionErrors = (errors) => ({
   errors,
 });
 
-
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS,
+  };
+};
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
@@ -38,11 +44,11 @@ export const signUp = user => dispatch => {
         localStorage.setItem("jwtToken", token);
         APIUtil.setAuthToken(token);
         const decodedUser = jwt_decode(token);
-        debugger;
+      
         dispatch(receiveCurrentUser(decodedUser));
       })
       .catch((error) => {
-        debugger;
+      
         return dispatch(receiveSessionErrors(error.response.data));
       });
 }
