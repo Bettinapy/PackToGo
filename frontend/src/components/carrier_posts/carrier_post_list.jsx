@@ -28,3 +28,5 @@ class CarrierPostList extends React.Component {
     
   }
 }
+
+export default CarrierPostList;

@@ -1,23 +1,23 @@
 import { connect } from "react-redux";
 import { fetchCarrierPost, deleteCarrierPost } from "../../actions/carrier_post_actions";
 import { clearErrors } from "../../actions/session_actions";
-
+import CarrierPostShow from './carrier_post_show';
 const mapStateToProps = (state, ownProps) => {
+  debugger
   const carrier_post = state.carrier_posts[ownProps.match.params.carrierPostId];
-  const currentUserId = Boolean(state.session.user.id)
-    ? state.session.user.id
-    : -1;
+  const currentUserId = typeof state.session.user.id !== "undefined" ? 
+    state.session.user.id : -1;
 
   return {
     carrier_post: carrier_post || {
       origin: "",
       destination: "",
-      travel_date: new Date().toJSON().slice(0, 10),
+      travelDate: new Date().toJSON().slice(0, 10),
       fee: 0,
-      parcel_contents: "",
-      max_weight: 0,
+      parcelContents: "",
+      maxWeight: 0,
       transportaion: "",
-      carrier_id: 0,
+      carrierId: 0,
     },
     currentUserId: currentUserId,
   };

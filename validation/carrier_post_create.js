@@ -37,7 +37,7 @@ module.exports = function validateCarrierPostCreate(data) {
             
             errors.travelDate = "Invalid date provided";
         }
-
+        debugger
         if (!Validator.isAfter(data.travelDate)) {
             errors.travelDate = 'Travel date must be in the future';
         }

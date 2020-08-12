@@ -18,7 +18,7 @@ class CarrierPostShow extends React.Component{
 
     handleDelete(e){
         e.preventDefault();
-        const choice = confirm("Delete this post?");
+        const choice = window.confirm("Delete this post?");
         if (choice === true) {
           this.props
             .deleteCarrierPost(this.props.match.params.carrierPostId)
@@ -29,10 +29,10 @@ class CarrierPostShow extends React.Component{
     }
     render(){
         const userAuth =
-          this.props.currentUserId === this.props.carrier_post.carrier_id ? (
+          this.props.currentUserId === this.props.carrier_post.carrierId ? (
             <>
               <button>
-                <Link to={`/carriers/${this.props.match.params.carrierPostId}/edit`}>
+                <Link to={`/carriers/posts/${this.props.match.params.carrierPostId}/edit`}>
                   edit
                 </Link>
               </button>
@@ -54,7 +54,7 @@ class CarrierPostShow extends React.Component{
             </div>
             <div>
               <h3>Travel Date</h3>
-              <p>{this.props.carrier_post.travel_date}</p>
+              <p>{this.props.carrier_post.travelDate}</p>
             </div>
             <div>
               <h3>fee</h3>
@@ -62,11 +62,11 @@ class CarrierPostShow extends React.Component{
             </div>
             <div>
               <h3>Parcel Contents</h3>
-              <p>{this.props.carrier_post.parcel_contents}</p>
+              <p>{this.props.carrier_post.parcelContents}</p>
             </div>
             <div>
               <h3>Max Weight</h3>
-              <p>{this.props.carrier_post.max_weight}</p>
+              <p>{this.props.carrier_post.maxWeight}</p>
             </div>
             <div>
               <h3>transportation</h3>
@@ -74,7 +74,7 @@ class CarrierPostShow extends React.Component{
             </div>
             <div>
                 <p>Carrier</p>
-                <p>{this.props.carrier_post.carrier_id}</p>
+                <p>{this.props.carrier_post.carrierId}</p>
             </div>
             {userAuth}
           </div>

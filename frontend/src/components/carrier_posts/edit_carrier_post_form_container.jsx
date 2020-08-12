@@ -6,8 +6,11 @@ import CarrierPostForm from "./carrier_post_form";
 
 
 const mapStateToProps = (state, ownProps) => {
+  const carrier_post = state.carrier_posts[ownProps.match.params.carrierPostId];
+ 
+  debugger
   return {
-    question: state.carrier_posts[ownProps.match.params.carrierPostId],
+    carrier_post: carrier_post,
     errors: state.errors.session.session_error || {
       origin: "",
       destination: "",

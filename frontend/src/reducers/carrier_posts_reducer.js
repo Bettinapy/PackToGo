@@ -12,7 +12,7 @@ const CarrierPostsReducer = (state={}, action) => {
         case RECEIVE_CARRIERPOSTS:
             return action.carrierPosts.data;
         case RECEIVE_CARRIERPOST:
-            newState = Object.assign({}, state, {[action.carrierPost.data.id]: action.carrierPost.data });
+            newState = Object.assign({}, state, {[action.carrierPost.data._id]: action.carrierPost.data });
             return newState;
         case REMOVE_CARRIERPOST:
             delete newState[action.carrierPostId.data];

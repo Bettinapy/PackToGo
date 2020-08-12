@@ -83,8 +83,10 @@ router.get('/:id', (req,res) => {
 
     CarrierPost.findById(req.params.id)
         .then(post => {
-            onePost[post.id] = post;
-            res.json(onePost)})
+            //yuan edited on 08/11 for frontend render
+            //onePost[post.id] = post;
+            //res.json(onePost)})
+            res.json(post)})
         .catch(err => res.json(err))
 });
 

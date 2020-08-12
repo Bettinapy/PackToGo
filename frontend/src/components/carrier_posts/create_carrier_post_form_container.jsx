@@ -4,16 +4,17 @@ import { clearErrors } from '../../actions/session_actions';
 import CarrierPostForm from './carrier_post_form';
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   return {
-    carrier_post: state.carrier_posts[ownProps.match.params.carrierPostId] || {
+    carrier_post: Object.values(state.carrier_posts)[0] || {
       origin: "",
       destination: "",
-      travel_date: new Date().toJSON().slice(0, 10),
+      travelDate: new Date().toJSON().slice(0, 10),
       fee: 0,
-      parcel_contents: "",
-      max_weight: 0,
-      transportaion: "",
-      carrier_id: state.session.user.id,
+      parcelContents: "",
+      maxWeight: 0,
+      transportation: "flight",
+      carrierId: state.session.user.id,
     },
     errors: state.errors.session.session_error || {
       origin: "",
