@@ -11,15 +11,15 @@ module.exports = function validateRegisterInput(data) {
   data.password2 = validText(data.password2) ? data.password2 : '';
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
-    errors.handle = 'Handle must be between 2 and 30 characters';
+    errors.handle = 'Username must be between 2 and 30 characters';
   }
 
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = 'Handle field is required';
+    errors.handle = 'Username is required';
   }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email field is required';
+    errors.email = 'Email is required';
   }
 
   if (!Validator.isEmail(data.email)) {
@@ -27,7 +27,7 @@ module.exports = function validateRegisterInput(data) {
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = 'Password is required';
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {

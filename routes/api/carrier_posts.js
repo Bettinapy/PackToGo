@@ -7,7 +7,8 @@ const keys = require("../../config/keys");
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateCarrierPostCreate = require('../../validation/carrier_post_create');
-//const validateLoginInput = require('../../validation/login');
+const mongoose = require('mongoose');
+const validateCarrierPostUpdate = require('../../validation/carrier_post_update');
 
 router.post('/create', passport.authenticate('jwt', { session: false }), (req,res) => {
 
@@ -37,11 +38,35 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req,re
 
     });
 
+    debugger;
+
     newCarrierPost.save()
         .then(post => res.json(post))
         .catch(errors => res.send(errors));
 })
 
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) => {
+
+
+
+    CarrierPost.findById(req.params.id)
+        .then(post => {
+            
+            if (post.carrierId.toString() !== req.user.id.toString()) {
+                return res.status(401).json({user: "Only the creator of the post can edit it"})
+            }
+        })
+        .catch(() => res.status(404).json({error: "Post not found"}))
+
+    const { errors, isValid } = validateCarrierPostUpdate(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    CarrierPost.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        .then(post => res.json(post))
+        .catch(err => res.json(err))
+});
 
 module.exports = router;
 // finished by george for post-carrier-model 8-11-2020

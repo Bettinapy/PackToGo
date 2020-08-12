@@ -3,38 +3,41 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 
-module.exports = function validateCarrierPostCreate(data) {
-  let errors = {};
+module.exports = function validateCarrierPostUpdate(data) {
+    let errors = {};
 
-  data.origin = validText(data.origin) ? data.origin : '';
-  data.destination = validText(data.destination) ? data.destination : '';
-  data.transportation = validText(data.transportation) ? data.transportation : '';
-  data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
-
-
-  if (Validator.isEmpty(data.origin)) {
-      errors.origin = 'Origin required';
-  }
-
-  if (Validator.isEmpty(data.destination)) {
-      errors.destination = 'Destination required';
-  }
-
-  if (Validator.isEmpty(data.transportation)) {
-    errors.transportation = 'Mode of transportation required';
+    if (data.origin !== undefined) {
+        data.origin = validText(data.origin) ? data.origin : '';
+        if (Validator.isEmpty(data.origin)) {
+        errors.origin = 'Origin required';
+        }
     }
 
-    if (Validator.isEmpty(data.parcelContents)) {
-        errors.parcelContents = 'Parcel contents are required';
+    if (data.destination !== undefined) {
+        data.destination = validText(data.destination) ? data.destination : '';
+        if (Validator.isEmpty(data.destination)) {
+            errors.destination = 'Destination required';
+        }
     }
 
+    if (data.transportation !== undefined) {
+        data.transportation = validText(data.transportation) ? data.transportation : '';
+        if (Validator.isEmpty(data.transportation)) {
+            errors.transportation = 'Mode of transportation required';
+        }
+    }
+
+    if (data.parcelContents !== undefined) {
+        data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
+        if (Validator.isEmpty(data.parcelContents)) {
+            errors.parcelContents = 'Parcel contents are required';
+        }
+    }
+    
     // Travel date validators
 
-    if (data.travelDate === undefined) {
-        errors.travelDate = 'Travel date required';
-    } else {
+    if (data.travelDate !== undefined) {
         if (!Validator.isDate(data.travelDate)) {
-            
             errors.travelDate = "Invalid date provided";
         }
 
@@ -49,9 +52,7 @@ module.exports = function validateCarrierPostCreate(data) {
 
     // Fee validators
 
-    if(data.fee === undefined) {
-        errors.fee = 'Fee required'
-    } else {
+    if(data.fee !== undefined) {
         if (!Validator.isNumeric(data.fee)) {
             errors.fee = 'Fee must be a number';
         }
@@ -65,10 +66,7 @@ module.exports = function validateCarrierPostCreate(data) {
         }
     }
     // Max weight validators
-    if (data.maxWeight === undefined) {
-        errors.maxWeight = 'Estimated parcel maximum weight is required'
-    } else {
-
+    if (data.maxWeight !== undefined) {
         if (!Validator.isNumeric(data.maxWeight)) {
             errors.maxWeight = 'Estimated parcel maximum weight must be a number';
         }
