@@ -2,6 +2,15 @@ const mongoose = require("mongoose");
 const express = require('express');
 const app = express();
 const db = require("./config/keys").mongoURI;
+const path = require("path");
+
+// tell our server to load the static build folder in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 // added by george for user-auth-backend 8-10-2020
 const users = require("./routes/api/users");
