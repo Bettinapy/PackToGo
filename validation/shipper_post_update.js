@@ -1,9 +1,8 @@
-// create by george for post-create-model 8-11-2020
 const Validator = require('validator');
 const validText = require('./valid-text');
 
 
-module.exports = function validateCarrierPostUpdate(data) {
+module.exports = function validateShipperPostUpdate(data) {
     let errors = {};
 
     if (data.origin !== undefined) {
@@ -20,13 +19,6 @@ module.exports = function validateCarrierPostUpdate(data) {
         }
     }
 
-    if (data.transportation !== undefined) {
-        data.transportation = validText(data.transportation) ? data.transportation : '';
-        if (Validator.isEmpty(data.transportation)) {
-            errors.transportation = 'Mode of transportation required';
-        }
-    }
-
     if (data.parcelContents !== undefined) {
         data.parcelContents = validText(data.parcelContents) ? data.parcelContents : '';
         if (Validator.isEmpty(data.parcelContents)) {
@@ -34,37 +26,6 @@ module.exports = function validateCarrierPostUpdate(data) {
         }
     }
     
-    // Travel date validators
-
-    if (data.travelDate !== undefined) {
-        if (!Validator.isDate(data.travelDate)) {
-            errors.travelDate = "Invalid date provided";
-        }
-
-        if (!Validator.isAfter(data.travelDate)) {
-            errors.travelDate = 'Travel date must be in the future';
-        }
-
-        if (Validator.isEmpty(data.travelDate)) {
-            errors.travelDate = 'Travel date required';
-        }
-    }
-
-    // Fee validators
-
-    if(data.fee !== undefined) {
-        // if (!Validator.isNumeric(data.fee)) {
-        //     errors.fee = 'Fee must be a number';
-        // }
-
-        if (data.fee < 0) {
-            errors.fee = "Fee cannot be negative"
-        }
-        
-        // if (Validator.isEmpty(data.fee)) {
-        //     errors.fee = 'Fee required';
-        // }
-    }
     // Max weight validators
     if (data.maxWeight !== undefined) {
         // if (!Validator.isNumeric(data.maxWeight)) {
