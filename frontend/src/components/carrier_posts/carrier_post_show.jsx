@@ -23,7 +23,7 @@ class CarrierPostShow extends React.Component{
           this.props
             .deleteCarrierPost(this.props.match.params.carrierPostId)
             .then(() => {
-              return this.props.history.push("/");
+              return this.props.history.push("/carriers/posts");
             });
         }
     }

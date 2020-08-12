@@ -21,6 +21,7 @@ export const receiveCarrierPost = (carrierPost) => {
 };
 
 export const removeCarrierPost = (carrierPostId) => {
+    debugger
     return {
         type: REMOVE_CARRIERPOST,
         carrierPostId
@@ -62,6 +63,6 @@ export const updateCarrierPost = (carrierPost) => {
 export const deleteCarrierPost = (carrierPostId) => {
     return dispatch => {
         return CarrierPostUtil.deleteCarrierPost(carrierPostId)
-            .then((carrierPost) => dispatch(removeCarrierPost(carrierPost.id)))
+            .then(() => dispatch(removeCarrierPost(carrierPostId)))
     }
 }
