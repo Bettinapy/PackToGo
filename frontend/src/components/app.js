@@ -17,7 +17,7 @@ import ShipperPostListContainer from './shipper_posts/shipper_post_list_containe
 
 
 const App = () => (
-  <div>
+  <div className="body-container">
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
