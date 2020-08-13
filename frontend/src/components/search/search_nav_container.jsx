@@ -7,7 +7,6 @@ const mapStateToProps = (state, ownProps) => {
     const search = (typeof queryString.parse(ownProps.location.search) !== 'undefined' ? (
         queryString.parse(ownProps.location.search)
     ) : ({ filterOrigin: "", filterDestination: "", filterDate: new Date().toJSON().slice(0, 10)}))
-        debugger
     return {
         search: search
     }
