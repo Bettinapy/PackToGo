@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-// import "./navbar.css";
+import "./navbar.scss";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class NavBar extends React.Component {
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+    this.props.history.push("/");
   }
 
   getLinks() {
@@ -22,27 +23,31 @@ class NavBar extends React.Component {
         </div>
       );
     } else {
-        if (this.props.location.pathname === "/login") {
+        switch (this.props.location.pathname) {
+          case "/":
             return (
-              <div>
-                <Link to={"/signup"}>Sign up</Link>
-              </div>
+              <>
+                <Link className="navbar-button" to={"/signup"}>Sign up</Link>
+                <Link className="navbar-button" to={"/login"}>Login</Link>
+              </>
             );
-        } else {
-            return (
-            <div>
-                <Link to={"/login"}>Login</Link>
-            </div>
-            );
+          default:
+            break;
         }
     }
   }
 
   render() {
     return (
-      <div>
-        <Link to={"/"}>Pack-To-Go</Link>
-        {this.getLinks()}
+      <div className="navbar-main-container">
+        <div className="navbar-left-container">
+            <Link className="logo-link" to={"/"}>
+            <img className="logo-img" src="https://minicram-dev.s3.amazonaws.com/images/packtogo-logo.png" alt="logo-img"/>
+            </Link>
+        </div>
+        <div className="navbar-right-container">
+            {this.getLinks()}
+        </div>
       </div>
     );
   }

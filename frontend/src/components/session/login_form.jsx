@@ -1,6 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-// import './login.scss';
+import { withRouter, Link } from "react-router-dom";
+import './session.scss';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -17,61 +17,124 @@ class LoginForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     // if (nextProps.currentUser === true) {
     // }
-
     this.setState({ errors: nextProps.errors });
   }
 
   update(field) {
-    return (e) =>
-      this.setState({
-        [field]: e.currentTarget.value,
-      });
+    return (e) => {
+      if (e.currentTarget.value.length > 0) {
+        e.currentTarget.previousSibling.className=`${field}-label-filled`
+      } else {
+        e.currentTarget.previousSibling.className = `${field}-label`
+      }
+      this.setState({[field]: e.currentTarget.value});
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
+    
     const user = {
-      email: this.state.email,
-      password: this.state.password,
+        email: this.state.email,
+        password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user).then(action => {
+      if (action.currentUser){
+        if (action.currentUser.role === "shipper") {
+          debugger
+          this.props.history.push('/carriers/posts');
+        } else {
+          this.props.history.push('/shippers/posts');
+        }
+      }
+    });
   }
 
-  renderErrors() {
+  _onBlur(updateBlur, field) {
+    return (e) => {
+      e.target.className = `input-${field}-blurred`;
+      this.state.updateBlur
+        ? this.setState({ [updateBlur]: false })
+        : this.setState({ [updateBlur]: true });
+    };
+  }
+
+  _onFocus(updateFocus, field) {
+    return (e) => {
+      e.target.className = `input-${field}-focused`;
+      this.state.updateFocus
+        ? this.setState({ [updateFocus]: false })
+        : this.setState({ [updateFocus]: true });
+    };
+  }
+
+  renderErrors(field) {
+    const errorsMessages = {};
+    Object.keys(this.state.errors).map((error, i) => {
+      return errorsMessages[error] = <span className="error-message" key={`error-${i}`}>{this.state.errors[error]}</span>
+    });
     return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
-        ))}
-      </ul>
+      errorsMessages[field]
     );
   }
 
   render() {
+    const otherForm = () => {
+      return (
+        <div className="other-form-container">
+          <h3 className="heading-other-form">Not a member?</h3>
+          <span className="subheading-other-form">Start shipping or delivering.</span>
+          <br />
+          <Link className="other-button" to="/signup">Sign up</Link>
+        </div>
+      )
+    }
+
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+      <div className="login-main-container">
+        <div className="login-left-container">
+          <div className="form-wrapper">
+            <form className="login-form" onSubmit={this.handleSubmit}>
+              <h2>Login</h2>
+              <div className="input-container">
+                <div className="email-label">Email</div>
+                <input
+                  className="input"
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  placeholder="Email"
+                  onBlur={this._onBlur("updateBlur", "email")}
+                  onFocus={this._onFocus("updateFocus", "email")}
+                />
+                <br />
+                <div className="error-message-container">
+                  {this.renderErrors("email")}
+                </div>
+                <div className="password-label">Password</div>
+                <input
+                  className="input"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  placeholder="Password"
+                  onBlur={this._onBlur("updateBlur", "password")}
+                  onFocus={this._onFocus("updateFocus", "password")}
+                />
+                <br />
+                <div className="error-message-container">
+                  {this.renderErrors("password")}
+                </div>
+                <input type="submit" value="Submit" />
+              </div>
+              {otherForm()}
+            </form>
           </div>
-        </form>
+        </div>
+        <div className="login-right-container">
+          <div className="login-side-pic-container"></div>
+        </div>
       </div>
     );
   }

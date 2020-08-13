@@ -28,17 +28,17 @@ module.exports = function validateShipperPostCreate(data) {
         errors.maxWeight = 'Estimated parcel maximum weight is required'
     } else {
 
-        if (!Validator.isNumeric(data.maxWeight)) {
-            errors.maxWeight = 'Estimated parcel maximum weight must be a number';
-        }
+        // if (!Validator.isNumeric(data.maxWeight)) {
+        //     errors.maxWeight = 'Estimated parcel maximum weight must be a number';
+        // }
 
         if (data.maxWeight < 0) {
             errors.maxWeight = "Estimated parcel maximum weight cannot be negative"
         }
 
-        if (Validator.isEmpty(data.maxWeight)) {
-            errors.maxWeight = 'Estimated parcel maximum weight is required';
-        }
+        // if (Validator.isEmpty(data.maxWeight)) {
+        //     errors.maxWeight = 'Estimated parcel maximum weight is required';
+        // }
     }
 
   return {

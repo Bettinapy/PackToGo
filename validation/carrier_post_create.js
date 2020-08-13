@@ -52,34 +52,34 @@ module.exports = function validateCarrierPostCreate(data) {
     if(data.fee === undefined) {
         errors.fee = 'Fee required'
     } else {
-        if (!Validator.isNumeric(data.fee)) {
-            errors.fee = 'Fee must be a number';
-        }
+        // if (!Validator.isNumeric(data.fee)) {
+        //     errors.fee = 'Fee must be a number';
+        // }
 
         if (data.fee < 0) {
             errors.fee = "Fee cannot be negative"
         }
 
-        if (Validator.isEmpty(data.fee)) {
-            errors.fee = 'Fee required';
-        }
+        // if (Validator.isEmpty(data.fee)) {
+        //     errors.fee = 'Fee required';
+        // }
     }
     // Max weight validators
     if (data.maxWeight === undefined) {
         errors.maxWeight = 'Estimated parcel maximum weight is required'
     } else {
 
-        if (!Validator.isNumeric(data.maxWeight)) {
-            errors.maxWeight = 'Estimated parcel maximum weight must be a number';
-        }
+        // if (!Validator.isNumeric(data.maxWeight)) {
+        //     errors.maxWeight = 'Estimated parcel maximum weight must be a number';
+        // }
 
         if (data.maxWeight < 0) {
             errors.maxWeight = "Estimated parcel maximum weight cannot be negative"
         }
 
-        if (Validator.isEmpty(data.maxWeight)) {
-            errors.maxWeight = 'Estimated parcel maximum weight is required';
-        }
+        // if (Validator.isEmpty(data.maxWeight)) {
+        //     errors.maxWeight = 'Estimated parcel maximum weight is required';
+        // }
     }
 
   return {
