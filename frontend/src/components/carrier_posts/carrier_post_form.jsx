@@ -48,10 +48,6 @@ class CarrierPostForm extends React.Component {
       <p>{this.props.errors.destination}</p>
     ) : (<></>))
 
-    // const parcelContentsErr = (this.props.errors.parcelContents ? (
-    //   <p>{this.props.errors.parcelContents}</p>
-    // ) : (<></>))
-
     const travelDateErr = (this.props.errors.travelDate ? (
       <p>{this.props.errors.travelDate}</p>
     ) : (<></>))
@@ -153,16 +149,6 @@ class CarrierPostForm extends React.Component {
           />
         </label>
         {feeErr}
-
-        {/* <label htmlFor="parcel-contents">
-          Parcel Contents&#42;
-          <input
-            type="text"
-            value={this.state.parcelContents}
-            onChange={this.handleChange("parcelContents")}
-          />
-        </label>
-        {parcelContentsErr} */}
 
         <label htmlFor="max-weight">
           Max Weight&#42;(g)

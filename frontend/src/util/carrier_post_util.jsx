@@ -1,7 +1,8 @@
 import axios from "axios";
 
-export const getCarrierPosts = () => {
-    return axios.get("/api/carrier_posts")
+export const getCarrierPosts = (search) => {
+    debugger
+    return axios.get("/api/carrier_posts", {params: {search}})
 };
 
 export const getCarrierPost = (carrierPostId) => {

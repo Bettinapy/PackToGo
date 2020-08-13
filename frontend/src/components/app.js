@@ -29,6 +29,8 @@ const App = () => (
       <ProtectedRoute exact path="/shippers/posts/create" component={CreateShipperPostFormContainer} />
       <ProtectedRoute exact path="/shippers/posts/:shipperPostId/edit" component={EditShipperPostFormContainer} />
 
+      <Route exact path="/carriers/posts/search" component={CarrierPostListContainer} />      
+
       <Route exact path="/carriers/posts/:carrierPostId" component={CarrierPostShowContainer} />
       <Route exact path="/carriers/posts" component={CarrierPostListContainer} />
       <Route exact path="/shippers/posts/:shipperPostId" component={ShipperPostShowContainer} />

@@ -14,14 +14,6 @@ router.post('/create', passport.authenticate('jwt', { session: false }), (req,re
 
     const { errors, isValid } = validateCarrierPostCreate(req.body);
 
-    // User.findOne({id: req.user.id})
-    //     .then(user => {
-    //         if (!user) {
-    //             return res.status(400).json({id: "User not found"})
-    //         }
-    //     })
-    //     .catch(errors => res.send(errors))
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -56,11 +48,6 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
             } else {
                 CarrierPost.findByIdAndUpdate(req.params.id, req.body, {new:true})
                     .then(post => {
-                        const newDate = new Date(post.travelDate);
-                        post.travelDate = newDate.getFullYear() + "-" +
-                            (newDate.getMonth() + 1) + "-" +
-                            (newDate.getDate() + 1);
-                        console.log(post.travelDate)
                         res.json(post)
                     })
                     .catch(err => res.json(err))
@@ -71,8 +58,17 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
 
 router.get('/', (req, res) => {
     const allPosts = {};
-
-    CarrierPost.find()
+    console.log(JSON.parse(req.query.search));
+    const search = JSON.parse(req.query.search);
+    const filterOrigin = search["filterOrigin"] || '';
+    const filterDestination = search["filterDestination"] || '';
+    const filterDate = search["filterDate"] || new Date().toJSON().slice(0, 10);
+    const formatDate = new Date(filterDate); 
+    CarrierPost.find(
+        {"origin": { "$regex": filterOrigin, "$options": "i" },
+         "destination": { "$regex": filterDestination, "$options": "i" },
+         "travelDate": {$gte: formatDate}
+            })
         .then(posts => {
             posts.forEach(post => {
                 allPosts[post.id] = post;
@@ -83,9 +79,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req,res) => {
-    //const onePost = {};
-    //let postCopy = {};
-    //let myDate;
 
     CarrierPost.findById(req.params.id)
         .then(post => {
