@@ -18,9 +18,9 @@ class SignupForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/");
-    }
+    // if (nextProps.signedIn === true) {
+    //   this.props.history.push("/");
+    // }
 
     this.setState({ errors: nextProps.errors });
   }
@@ -47,7 +47,18 @@ class SignupForm extends React.Component {
       role: this.state.role,
     };
 
-    this.props.signUp(user, this.props.history);
+    this.props.signUp(user).then((action) => {
+      debugger
+      if(action.currentUser){
+
+        if (action.currentUser.role === "shipper") {
+          debugger;
+          this.props.history.push("/carriers/posts");
+        } else if (action.currentUser.role === "carrier") {
+          this.props.history.push("/shippers/posts");
+        }
+      }
+    });
   }
 
   _onBlur(updateBlur, field) {

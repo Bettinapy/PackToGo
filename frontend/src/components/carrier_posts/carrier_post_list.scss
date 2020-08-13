@@ -1,3 +1,38 @@
+$blue: #1ba0ed;
+$font-mont: 'Montserrat', sans-serif;
+$red: #F95A60;
+$pink: #FCC3BD;
+$gray: #a0adbb;
+$light-gray: #f0f0f0;
+
 .search-form-container{
     margin-top: 50px;
 }
+
+.carrier-post-heading {
+    font-family: $font-mont;
+    font-size: 48px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.carrier-post-list-item-container {
+    border: 1px solid $light-gray;
+}
+
+.carrier-post-show-item {
+    text-decoration: none;
+    color: black;
+    font-family: $font-mont;
+    font-size: 15px;
+}
+
+.carrier-post-show-item:hover {
+    color: $red;
+}
+
+
+.carrier-post-list-item {
+    
+}
+

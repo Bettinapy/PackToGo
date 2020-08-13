@@ -34,7 +34,7 @@ export const clearErrors = () => {
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
     APIUtil.setAuthToken(false);
-    dispatch(logoutUser());
+    return dispatch(logoutUser());
 };
 
 export const signUp = user => dispatch => {
@@ -44,13 +44,14 @@ export const signUp = user => dispatch => {
         localStorage.setItem("jwtToken", token);
         APIUtil.setAuthToken(token);
         const decodedUser = jwt_decode(token);
-      
-        dispatch(receiveCurrentUser(decodedUser));
-      })
-      .catch((error) => {
-      
-        return dispatch(receiveSessionErrors(error.response.data));
-      });
+        
+        return dispatch(receiveCurrentUser(decodedUser));
+      },
+        (error) => {
+          debugger
+          return dispatch(receiveSessionErrors(error.response.data));
+        }
+      )
 }
 
 export const login = user => dispatch => {
@@ -61,9 +62,10 @@ export const login = user => dispatch => {
             localStorage.setItem('jwtToken', token);
             APIUtil.setAuthToken(token);
             const decodedUser = jwt_decode(token);
-            dispatch(receiveCurrentUser(decodedUser));
-        })
-        .catch(error => {
-            dispatch(receiveSessionErrors(error.response.data));
-        });
+            return dispatch(receiveCurrentUser(decodedUser));
+        },
+          error => {
+            return(dispatch(receiveSessionErrors(error.response.data)));
+          }
+        )
 };

@@ -18,15 +18,15 @@ class MainSearch extends React.Component {
         debugger
         return e => {
             if (role === "carrier") {
+              if (!this.props.loggedIn) {
                 e.target.className = "search-icon-clicked";
-                e.target.previousElementSibling.className = "search-icon";
-              if(!this.props.loggedIn){
+                e.target.previousElementSibling.className = "search-icon";              
                 this.setState({ role: "carrier"})
               }
             } else if (role === "shipper") {
-                e.target.className = "search-icon-clicked";
-                e.target.nextElementSibling.className = "search-icon";
               if (!this.props.loggedIn) {
+                e.target.className = "search-icon-clicked";
+                e.target.nextElementSibling.className = "search-icon";              
                 this.setState({ role: "shipper" })
               }
             }
