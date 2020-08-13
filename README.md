@@ -40,7 +40,7 @@ We are building an App to reduce the cost of shipping through peer-to-peer conne
 * Reviews on Carriers / Shippers
 
 ## Group Members and Work Breakdown
-Yuanyuan Zhou, George Rodnikov, Brandon Kim, Jonathan Su
+Yuanyuan Zhou (Team Lead), George Rodnikov (Backend developer), Brandon Kim (Frontend developer), Jonathan Su (Flex developer)
 
 ### August 10
 * MongoDB - George
@@ -56,11 +56,15 @@ Yuanyuan Zhou, George Rodnikov, Brandon Kim, Jonathan Su
 * Carrier Post and Shipper Post backend: Model, Validation, Routes - George
 * Carrier Post and Shipper Post frontend - Yuan
 * Search backend: Model, Validation, Routes - Jon
-* Map - George
 
 ### August 12
-* Post 
-* Search feature
+* Shipper Post backend - George
+* Carrier Post and Shipper Post frontend - Yuan
+* User auth and homepage frontend - Brandon
+* Search backend: Model, Validation, Routes - Jon
+* Search frontend - Yuan
+* Booking frontend - Brandon
 
 ### August 13
 * Booking
+* Map - George
