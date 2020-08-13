@@ -20,6 +20,7 @@ const passport = require('passport');
 
 const carrierPosts = require("./routes/api/carrier_posts");
 const shipperPosts = require("./routes/api/shipper_posts");
+const bookings = require("./routes/api/bookings");
 
 
 mongoose
@@ -43,6 +44,7 @@ require('./config/passport')(passport);
 app.use("/api/users",users);
 app.use("/api/carrier_posts",carrierPosts);
 app.use("/api/shipper_posts",shipperPosts);
+app.use("/api/bookings",bookings);
 
 
 const port = process.env.PORT || 5000;
