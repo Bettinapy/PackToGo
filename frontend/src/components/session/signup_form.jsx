@@ -48,11 +48,15 @@ class SignupForm extends React.Component {
     };
 
     this.props.signUp(user).then((action) => {
-      if (action.currentUser.role === "shipper") {
-        // debugger;
-        this.props.history.push("/carriers/posts");
-      } else {
-        this.props.history.push("/shippers/posts");
+      debugger
+      if(action.currentUser){
+
+        if (action.currentUser.role === "shipper") {
+          debugger;
+          this.props.history.push("/carriers/posts");
+        } else if (action.currentUser.role === "carrier") {
+          this.props.history.push("/shippers/posts");
+        }
       }
     });
   }
