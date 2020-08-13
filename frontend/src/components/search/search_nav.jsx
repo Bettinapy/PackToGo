@@ -1,4 +1,5 @@
 import React from 'react';
+import './search.scss';
 
 class SearchNav extends React.Component{
     constructor(props) {
@@ -36,24 +37,60 @@ class SearchNav extends React.Component{
 
     render(){
         const travelDate = (this.props.history.location.pathname.includes('carriers') ? (
-            <label htmlFor="date">Travel Date
-                <input type="date" min={new Date().toJSON().slice(0, 10)} id="date" onChange={this.handleFilter('filterDate')} value={this.state.filterDate} />
+            <label
+                className="search-form-label"
+                htmlFor="date">Travel Date
+                <input
+                    className="search-form-input"
+                    type="date" 
+                    min={new Date().toJSON().slice(0, 10)} 
+                    id="date" 
+                    onChange={this.handleFilter('filterDate')} 
+                    value={this.state.filterDate} 
+                />
             </label>
         ):(<></>))
-        return(
-            <div className="search-form-container">
-                <form onSubmit={this.handleSearch}>
-                    <label htmlFor="origin">Origin
-                        <input id="origin" onChange={this.handleFilter('filterOrigin')} value={this.state.filterOrigin} />
-                    </label>
-                    <label htmlFor="destination">Destination
-                        <input id="destination" onChange={this.handleFilter('filterDestination')} value={this.state.filterDestination} />
-                    </label>
+        return (
+          <div className="search-form-container">
+            <div className="form-wrapper">
+              <form className="search-form" onSubmit={this.handleSearch}>
+                <div>
+                  <label 
+                    className="search-form-label" 
+                    htmlFor="origin">
+                    Origin
+                    <input
+                      className="search-form-input"
+                      id="origin"
+                      onChange={this.handleFilter("filterOrigin")}
+                      value={this.state.filterOrigin}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label 
+                    className="search-form-label"
+                    htmlFor="destination">
+                    Destination
+                    <input
+                      id="destination"
+                      onChange={this.handleFilter("filterDestination")}
+                      value={this.state.filterDestination}
+                    />
+                  </label>
+                </div>
+                <div>
                     {travelDate}
-                    <input type="submit" value="search" />
-                </form>
+                </div>
+                <input
+                  className="carrier-list-search-button"
+                  type="submit"
+                  value="search"
+                />
+              </form>
             </div>
-        )
+          </div>
+        );
     }
 }
 

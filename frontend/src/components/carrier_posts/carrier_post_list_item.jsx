@@ -9,9 +9,12 @@ class CarrierPostListItem extends React.Component{
         travelDate = newDate.toJSON().slice(0, 10)
       }
         return (
-          <div>
-            <Link to={`/carriers/posts/${this.props.carrier_post._id}`}>
-              <div>
+          <div className="carrier-post-list-item-container">
+            <Link 
+              className="carrier-post-show-item"
+              to={`/carriers/posts/${this.props.carrier_post._id}`}
+            >
+              <div className="carrier-post-list-item">
                 From {this.props.carrier_post.origin} to {this.props.carrier_post.destination}
               </div>
               <div>Travel date: {travelDate}</div>
