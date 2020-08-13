@@ -21,6 +21,10 @@ const BookingSchema = new Schema({
     parcelContents: {
         type: String,
         required: true
+    },
+    phone: {
+        type: String,
+        required: false
     }
 }
     , {

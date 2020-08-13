@@ -122,7 +122,8 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
                 carrierId: currentCarrierId,
                 shipperId: req.user.id,
                 carrierPostId: req.params.id,
-                parcelContents: req.body.parcelContents        
+                parcelContents: req.body.parcelContents,
+                phone: req.body.phone        
         
             });
         
