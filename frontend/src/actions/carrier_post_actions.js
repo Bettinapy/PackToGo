@@ -28,9 +28,10 @@ export const removeCarrierPost = (carrierPostId) => {
     }
 }
 
-export const fetchCarrierPosts = () => {
+export const fetchCarrierPosts = (search) => {
     return dispatch => {
-        return CarrierPostUtil.getCarrierPosts()
+        debugger
+        return CarrierPostUtil.getCarrierPosts(search)
             .then((payload) => dispatch(receiveCarrierPosts(payload)),
                   (err) => dispatch(receiveSessionErrors(err.response.data)))
     }

@@ -9,7 +9,6 @@ class ShipperPostListItem extends React.Component{
               <div>
                 From {this.props.shipper_post.origin} to {this.props.shipper_post.destination}
               </div>
-              <div>Travel date: {this.props.shipper_post.travel_date}</div>
             </Link>
           </div>
         );

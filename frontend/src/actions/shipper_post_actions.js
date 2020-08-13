@@ -27,9 +27,9 @@ export const removeShipperPost = (shipperPostId) => {
     }
 }
 
-export const fetchShipperPosts = () => {
+export const fetchShipperPosts = (search) => {
     return dispatch => {
-        return ShipperPostUtil.getShipperPosts()
+        return ShipperPostUtil.getShipperPosts(search)
             .then((payload) => dispatch(receiveShipperPosts(payload)),
                 (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
