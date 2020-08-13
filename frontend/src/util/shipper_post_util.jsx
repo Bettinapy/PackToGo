@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getShipperPosts = () => {
-    return axios.get("/api/shipper_posts")
+export const getShipperPosts = (search) => {
+    return axios.get("/api/shipper_posts", { params: { search } })
 };
 
 export const getShipperPost = (shipperPostId) => {

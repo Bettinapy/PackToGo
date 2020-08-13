@@ -53,8 +53,13 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
 
 router.get('/', (req, res) => {
     const allPosts = {};
-
-    ShipperPost.find()
+    const search = JSON.parse(req.query.search);
+    const filterOrigin = search["filterOrigin"] || '';
+    const filterDestination = search["filterDestination"] || '';
+    ShipperPost.find(
+        {"origin": { "$regex": filterOrigin, "$options": "i" },
+        "destination": { "$regex": filterDestination, "$options": "i" },
+        })
         .then(posts => {
             posts.forEach(post => {
                 allPosts[post.id] = post;

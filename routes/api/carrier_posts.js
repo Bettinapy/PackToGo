@@ -58,7 +58,6 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
 
 router.get('/', (req, res) => {
     const allPosts = {};
-    console.log(JSON.parse(req.query.search));
     const search = JSON.parse(req.query.search);
     const filterOrigin = search["filterOrigin"] || '';
     const filterDestination = search["filterDestination"] || '';

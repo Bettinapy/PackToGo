@@ -23,23 +23,6 @@ class CarrierPostList extends React.Component {
   }
 
   render(){
-    
-    //let carrier_posts = this.state.carrier_posts
-
-    // if(this.state.filterOrigin){
-    //   carrier_posts = carrier_posts.filter(
-    //     item => item.origin.toLowerCase().includes(this.state.filterOrigin))
-    // }
-
-    // if (this.state.filterDestination) {
-    //   carrier_posts = carrier_posts.filter(
-    //     item => item.destination.toLowerCase().includes(this.state.filterDestination))
-    // }
-
-    // if (this.state.filterDate) {
-    //   carrier_posts = carrier_posts.filter(
-    //     item => item.travelDate.toLowerCase().includes(this.state.filterDate))
-    // }
 
     const carrierPostList = (this.props.carrier_posts.length !==0 ? (
         this.props.carrier_posts.map(carrier_post => (
