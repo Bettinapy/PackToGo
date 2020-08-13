@@ -34,8 +34,11 @@ class MainSearch extends React.Component {
     }
 
   handleFilter(type) {
+    debugger
     return (e) => {
-      this.setState({search: {[type]: e.target.value }})
+      let stateCopy = Object.assign({}, this.state);
+      stateCopy.search[type] = e.target.value;
+      this.setState(stateCopy)
     }
   }
 
