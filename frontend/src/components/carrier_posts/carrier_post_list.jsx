@@ -33,7 +33,7 @@ class CarrierPostList extends React.Component {
     return(
         <>
           <SearchNavContainer />
-          <h1>Carrier Posts</h1>
+          <h1 className="carrier-post-heading">Results for Carriers</h1>
           {carrierPostList}
         </>
     )

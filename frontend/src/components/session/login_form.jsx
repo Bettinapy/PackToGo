@@ -39,7 +39,14 @@ class LoginForm extends React.Component {
         password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user).then(action => {
+      if (action.currentUser.role === "shipper") {
+        debugger
+        this.props.history.push('/carriers/posts');
+      } else {
+        this.props.history.push('/shippers/posts');
+      }
+    });
   }
 
   _onBlur(updateBlur, field) {
