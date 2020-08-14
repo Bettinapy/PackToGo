@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
+import './carrier_post_show.scss'
 
 class CarrierPostShow extends React.Component {
   constructor(props) {
@@ -70,74 +71,74 @@ class CarrierPostShow extends React.Component {
     const userAuth =
       this.props.currentUserId === this.props.carrier_post.carrierId ? (
         <>
-          <button>
+          <div className="user-button-container">
             <Link
-              to={`/carriers/posts/${this.props.match.params.carrierPostId}/edit`}
+                className="user-button" to={`/carriers/posts/${this.props.match.params.carrierPostId}/edit`}
             >
               edit
             </Link>
-          </button>
-          <button onClick={this.handleDelete}>delete</button>
+            <button className="user-button" onClick={this.handleDelete}>delete</button>
+          </div>
         </>
       ) : (
         <></>
       );
    
     const parcelContentsErr = this.props.errors.parcelContents ? (
-      <p>{this.props.errors.parcelContents}</p>
+      <div className="popup-booking-form-err">
+        <p>{this.props.errors.parcelContents}</p>
+      </div>
     ) : (
       <></>
     );
     return (
       <>
-        <div>
-          <div className="carrier-post-show-container">
-            <div>
+        <div className="carrier-post-show-container">
+            <div className="carrier-post-header" >
+              From {this.props.carrier_post.origin} to {this.props.carrier_post.destination}
+            </div>
+          <div className="carrier-show-container">
+            <div className="carrier-show-col-containter" >
               <h3>Origin</h3>
               <p>{this.props.carrier_post.origin}</p>
               
             </div>
-            <div>
+            <div className="carrier-show-col-containter">
               <h3>Destination</h3>
               <p>{this.props.carrier_post.destination}</p>
               
             </div>
-            <div>
+            <div className="carrier-show-col-containter">
               <h3>Travel Date</h3>
               <p>{this.props.carrier_post.travelDate}</p>
             
             </div>
-            <div>
-              <h3>fee</h3>
-              <p>{this.props.carrier_post.fee}</p>
+            <div className="carrier-show-col-containter">
+              <h3>Fee</h3>
+              <p>${this.props.carrier_post.fee}</p>
             
             </div>
 
-            <div>
+            <div className="carrier-show-col-containter">
               <h3>Max Weight</h3>
-              <p>{this.props.carrier_post.maxWeight}</p>
+              <p>{this.props.carrier_post.maxWeight}lbs</p>
          
             </div>
-            <div>
+            <div className="carrier-show-col-containter">
               <h3>Transportation</h3>
               <p>{this.props.carrier_post.transportation}</p>
             </div>
-            <div>
-                <p>Carrier</p>
+
+            <div className="carrier-show-col-containter">
+                <h3>Carrier</h3>
                 <p>{this.props.carrier_post.carrierId}</p>
             </div>
             {userAuth}
+            <div className="submit-button-container" >
+
+              <button className="submit-button" onClick={this.toggleModal}>Booking</button>
+            </div>
           </div>
-          <div>
-            <h3>Transportation</h3>
-            <p>{this.props.carrier_post.transportation}</p>
-          </div>
-          <div>
-            <p>Carrier</p>
-            <p>{this.props.carrier_post.carrierId}</p>
-          </div>
-          {userAuth}
-          <button onClick={this.toggleModal}>Booking</button>
         </div>
 
         <Modal
@@ -150,30 +151,35 @@ class CarrierPostShow extends React.Component {
             labelledby: "heading",
             describedby: "fulldescription",
           }}
+          className="popup-modal-container"
         >
-          <div>
+          <div className="popup-booking-container">
             <h1>Book a carrier</h1>
             <p>Please fill out the following information: </p>
-            <form onSubmit={this.handleBooking}>
-              <label>
-                Parcel Content&#42;
+            <div >
+              <form onSubmit={this.handleBooking} className="popup-booking-form-container">
+              <label className="booking-form-label">
+                  <h3>Parcel Content&#42;</h3>
                 <input
                   type="text"
+                  className="booking-form-input"
                   value={this.state.parcelContents}
                   onChange={this.handleChange("parcelContents")}
                 />
               </label>
               {parcelContentsErr}
-              <label htmlFor="phone">
-                Phone
+              <label htmlFor="phone" className="booking-form-label">
+                <h3>Phone</h3>
                 <input
                   type="text"
+                  className="booking-form-input"
                   value={this.state.phone}
                   onChange={this.handleChange("phone")}
                 />
               </label>
               <input type="submit" value="Submit booking" />
             </form>
+            </div>
           </div>
         </Modal>
       </>

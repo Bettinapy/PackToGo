@@ -13,13 +13,18 @@ class BookingShow extends React.Component {
   render() {
       return (
         <div className="booking-container">
-          <h3>Thanks {this.props.currentUser.handle}!</h3>
-          <h2>Your booking is confirmed</h2>
-          <div>
-            Parcel Contents: <p>{this.props.booking.parcelContents}</p>
-          </div>
-          <div>
-            <Link to="/" >Return to home page</Link>
+          <div className="booking-show-container">
+
+            <div className="booking-info-container">
+              <h3>Thanks {this.props.currentUser.handle}!</h3>
+              <h2>Your booking is confirmed</h2>
+            </div>
+            <div>
+              Parcel Contents Include: <p>{this.props.booking.parcelContents}</p>
+            </div>
+            <div>
+              <Link to="/" >Return to home page</Link>
+            </div>
           </div>
         </div>
       );
