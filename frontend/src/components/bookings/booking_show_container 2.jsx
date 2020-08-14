@@ -1,0 +1,26 @@
+import { connect } from "react-redux";
+import {fetchBooking} from '../../actions/booking_actions';
+import { clearErrors } from "../../actions/session_actions";
+import BookingShow from './booking_show';
+
+const mapStateToProps = (state, ownProps) => {
+    const booking = state.bookings;
+    const currentUser =
+      typeof state.session.user !== "undefined" ? state.session.user : {};
+      debugger
+    return{
+        booking: booking || {
+            parcelContents: ""
+        },
+        currentUser,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      fetchBooking: (bookingId) => dispatch(fetchBooking(bookingId)),
+      clearErrors: () => dispatch(clearErrors()),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookingShow);

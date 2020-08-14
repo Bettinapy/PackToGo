@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchCarrierPost, deleteCarrierPost } from "../../actions/carrier_post_actions";
+import {createBooking} from "../../actions/booking_actions";
 import { clearErrors } from "../../actions/session_actions";
 import CarrierPostShow from './carrier_post_show';
 const mapStateToProps = (state, ownProps) => {
@@ -23,6 +24,10 @@ const mapStateToProps = (state, ownProps) => {
       carrierId: 0,
     },
     currentUserId: currentUserId,
+    loggedIn: state.session.isAuthenticated ,
+    errors: state.errors.session || {
+      parcelContents:"",
+    },
   };
 };
 
@@ -30,6 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCarrierPost: (carrierPostId) => dispatch(fetchCarrierPost(carrierPostId)),
     deleteCarrierPost: (carrierPostId) => dispatch(deleteCarrierPost(carrierPostId)),
+    createBooking: (carrierPostId, bookingData) => dispatch(createBooking(carrierPostId, bookingData)),
     clearErrors: () => dispatch(clearErrors()),
   };
 };

@@ -17,11 +17,16 @@ class NavBar extends React.Component {
 
   getLinks() {
     if (this.props.loggedIn) {
+      let role = this.props.currentUser.role;
+      let link = role === 'shipper' ? '/shippers/posts/create' : '/carriers/posts/create'
       return (
-        <div>
-          <button 
-            className="navbar-button"
-            onClick={this.logoutUser}>Log out
+        <div className="navbar-user-container">
+          <p className="user-greeting">Hi, {this.props.currentUser.handle}</p>
+          <Link className="navbar-button" to={link}>
+            Create a post
+          </Link>
+          <button className="navbar-button" onClick={this.logoutUser}>
+            Log out
           </button>
         </div>
       );

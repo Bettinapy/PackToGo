@@ -10,6 +10,7 @@ const passport = require('passport');
 const validateCarrierPostCreate = require('../../validation/carrier_post_create');
 const mongoose = require('mongoose');
 const validateCarrierPostUpdate = require('../../validation/carrier_post_update');
+const validateBookingCreate = require('../../validation/booking_create');
 
 router.post('/create', passport.authenticate('jwt', { session: false }), (req,res) => {
 
@@ -109,7 +110,11 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
 });
 
 router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
+    const { errors, isValid } = validateBookingCreate(req.body);
 
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
     let currentCarrierId;
 
     CarrierPost.findById(req.params.id)

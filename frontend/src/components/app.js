@@ -14,7 +14,7 @@ import CreateShipperPostFormContainer from './shipper_posts/create_shipper_post_
 import EditShipperPostFormContainer from './shipper_posts/edit_shipper_post_form_container';
 import ShipperPostShowContainer from './shipper_posts/shipper_post_show_container';
 import ShipperPostListContainer from './shipper_posts/shipper_post_list_container';
-
+import BookingShowContainer from './bookings/booking_show_container';
 
 const App = () => (
   <div className="body-container">
@@ -28,6 +28,7 @@ const App = () => (
       <ProtectedRoute exact path="/carriers/posts/:carrierPostId/edit" component={EditCarrierPostFormContainer} />
       <ProtectedRoute exact path="/shippers/posts/create" component={CreateShipperPostFormContainer} />
       <ProtectedRoute exact path="/shippers/posts/:shipperPostId/edit" component={EditShipperPostFormContainer} />
+      <ProtectedRoute exact path="/bookings/:bookingId" component={BookingShowContainer} />
 
       <Route exact path="/carriers/posts/search" component={CarrierPostListContainer} />
       <Route exact path="/shippers/posts/search" component={ShipperPostListContainer} />       

@@ -1,0 +1,169 @@
+$blue: #1ba0ed;
+$font-mont: 'Montserrat', sans-serif;
+$red: #F95A60;
+$pink: #FCC3BD;
+$gray: #a0adbb;
+$light-gray: #f0f0f0;
+
+.carrier-post-show-container{
+    top: 50px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: $red;
+    font-family: $font-mont;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: pink;
+}
+
+
+.carrier-post-header{
+    padding-top: 10%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: 700;
+    font-size: 50px;
+    width: 100%;
+
+}
+
+.carrier-show-container {
+    border-radius: 3px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    color: #000;
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carrier-show-col-containter{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.carrier-show-col-containter > h3 {
+    width: 40%;
+    text-align: left;
+    padding-left: 20%;
+}
+
+.user-button-container{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.user-button{
+    color: $red;
+    font-family: $font-mont;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid $pink;
+    position: relative;
+    height: 100%;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.user-button:hover{
+    cursor: pointer;
+    background-color: $red;
+    color: white;
+}
+
+.submit-button{
+    border-radius: 5px;
+    min-height: 20px;
+    background-color: #fff;
+    border: 1px solid #a0adbb;
+    padding: 10px;
+    font-family: "Montserrat",sans-serif;
+    font-size: 20px;
+}
+
+.submit-button:hover{
+    cursor: pointer;
+    background-color: $red;
+    color: white;
+}
+
+.popup-modal-container{
+    border: solid 1px red;
+}
+
+.popup-booking-container{
+     border-radius: 3px;
+     border: solid 1px red;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 5%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    color: #000;
+    margin: 0 auto;
+    width: 70%;
+    font-family: $font-mont;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.popup-booking-container > h1{
+    
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.popup-booking-container > p{
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.popup-booking-form-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.booking-form-label{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.booking-form-label > h3{
+    width: 45%;
+    text-align: left;
+}
+
+.booking-form-input{
+    min-height: 20px;
+    border: 1px solid #fcc3bd;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 15px;
+    font-family: "Montserrat",sans-serif;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.popup-booking-form-err{
+    margin-bottom: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    color: red;
+}
