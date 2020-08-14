@@ -15,39 +15,11 @@ ObjectId = Schema.ObjectId;
 
 // booking show route
 router.get('/:id', (req,res) => {
-
-    const fullObject = {}
     
     Booking.findById(req.params.id)
-        //.then(booking => res.json(booking))
-        .then(booking => {
-            fullObject.id = booking.id;
-            fullObject.parcelContents = booking.parcelContents;
-            fullObject.carrierId = booking.carrierId;
-            fullObject.shipperId = booking.shipperId;
-            fullObject.carrierPostId = booking.carrierPostId;
-            fullObject.phone = booking.phone;
-            User.findById(fullObject.carrierId)
-                .then(user => {
-                    fullObject.carrierHandle = user.handle;
-                    fullObject.carrierEmail = user.email;
-                    CarrierPost.findById(fullObject.carrierPostId)
-                        .then(post => {
-                            fullObject.origin = post.origin;
-                            fullObject.destination = post.destination;
-                            fullObject.travelDate = post.travelDate;
-                            fullObject.transportation = post.transportation;
-                            fullObject.fee = post.fee;
-                            fullObject.maxWeight = post.maxWeight;
-                            res.json(fullObject);
-                        })
-                })
-
-        })
+        .then(booking => res.json(booking))
         .catch(errors => res.json(errors))
-    
 
-    
 });
 
 // bookings index route

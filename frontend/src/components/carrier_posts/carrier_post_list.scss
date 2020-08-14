@@ -9,18 +9,20 @@ $light-gray: #f0f0f0;
     margin-top: 50px;
 }
 
-.carrier-post-container {
-    position: absolute;
+.carrier-list-container {
     top: 50%;
+    background-color: #d9e9f7;
+    padding: 240px;
+    padding-top: 20px;
 }
 
 .carrier-post-heading {
     font-family: $font-mont;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 700;
     margin-top: 50px;
     margin-bottom: 30px;
-    margin-left: 10px;
+    margin-left: 55px;
 }
 
 .carrier-post-list-item-container {
@@ -35,7 +37,7 @@ $light-gray: #f0f0f0;
     text-decoration: none;
     color: black;
     font-family: $font-mont;
-    font-size: 20px;
+    font-size: 17px;
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
@@ -72,30 +74,39 @@ $light-gray: #f0f0f0;
 
 .carrier-post-subheading-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-bottom: 1px solid black;
     width: 96%;
     margin: 0 auto;
+
 }
 
 .carrier-post-subheading-left {
     font-family: $font-mont;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 500;
-    margin-left: 40px;
     margin-bottom: 10px;
+    text-align: center;
+    width:40%;
     // border-bottom: 1px solid black;
+}
+
+.carrier-post-subheading-mid{
+    font-family: $font-mont;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+    width:30%;
 }
 
 .carrier-post-subheading-right {
     font-family: $font-mont;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 500;
-    margin-right: 40px;
     margin-bottom: 10px;
-    width: 50%;
+    text-align: center;
     // border-bottom: 1px solid black;
-    display: flex;
-    justify-content: space-between;
+    width:30%;
 }
 

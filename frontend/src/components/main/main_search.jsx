@@ -1,4 +1,5 @@
 import React from 'react';
+import TravelMap from '../map/travel_map';
 
 class MainSearch extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class MainSearch extends React.Component {
 
     handleClick(role, e) {
         // e.preventDefault()
-        debugger
+        //debugger
         return e => {
             if (role === "carrier") {
               if (!this.props.loggedIn) {
@@ -34,7 +35,7 @@ class MainSearch extends React.Component {
     }
 
   handleFilter(type) {
-    debugger
+    //debugger
     return (e) => {
       let stateCopy = Object.assign({}, this.state);
       stateCopy.search[type] = e.target.value;
@@ -43,7 +44,7 @@ class MainSearch extends React.Component {
   }
 
   handleSearch(e) {
-    debugger
+    //debugger
     e.preventDefault();
     const serialize = obj => Object.keys(obj)
       .map(key => `${key}=${encodeURIComponent(obj[key])}`)
@@ -63,7 +64,7 @@ class MainSearch extends React.Component {
 
     renderRole() {
     
-      debugger
+      //debugger
       
         if (this.state.role === 'shipper') {
             return (
@@ -145,7 +146,7 @@ class MainSearch extends React.Component {
     }
 
     renderIcon() {
-      debugger
+      //debugger
       if (this.props.loggedIn) {
         if (this.state.role === "shipper") {
           return (
@@ -194,7 +195,14 @@ class MainSearch extends React.Component {
         return (
           <>
             {this.renderIcon()}
-            {this.renderRole()}
+            <div className="search-and-map-container">
+              {this.renderRole()}
+              <div className="map-container">
+                <TravelMap 
+                  mapOrigin = {this.state.search.filterOrigin}
+                  mapDestination = {this.state.search.filterDestination}/>
+              </div>
+            </div>
           </>
         );
     };

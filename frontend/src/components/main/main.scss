@@ -15,24 +15,36 @@ $gray: #a0adbb;
     box-sizing: border-box;
 }
 
-
-.navbar-button {
-    z-index: 11;
-    color: $red;
-    font-family: $font-mont;
-    text-decoration: none;
-    font-size: 22px;
-    background-color: white;
-    border-radius: 5px;
-    padding: 5px;
-    border: 1px solid $pink;
-    position: relative;
-    height: 100%;
-    margin-right: 5px;
+.search-and-map-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    width:100%;
+    //height: 100%;
+    // flex-wrap: wrap;
 }
 
-.navbar-button:hover {
-    cursor: pointer;
-    background-color: $red;
-    color: white;
+@media screen and (max-width: 850px) {
+    .search-and-map-container {
+        flex-direction: column;
+        justify-content: flex-start; 
+    }
+}
+
+.map-container {
+    width: 100%;
+    // min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 20px;
+}
+
+.test-points-container {
+    // background-color: gold;
+    // display:flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // min-height: 100px;
 }

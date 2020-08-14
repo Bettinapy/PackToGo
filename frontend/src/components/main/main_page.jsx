@@ -23,9 +23,9 @@ export default function MainPage() {
           <span className="banner-subheading-two">
             Get paid when you arrive.
           </span>
-          <Link className="banner-button" to="/signup">
+          {/* <Link className="banner-button" to="/signup">
             See Posts
-          </Link>
+          </Link> */}
         </div>
         <div className="main-post-container">
           <div className="main-post-search-header">
