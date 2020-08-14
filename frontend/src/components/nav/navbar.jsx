@@ -47,17 +47,14 @@ class NavBar extends React.Component {
         </div>
       );
     } else {
-        switch (this.props.location.pathname) {
-          case "/":
+        // switch (this.props.location.pathname) {
+        //   case "/":
             return (
               <div>
                 <Link className="navbar-button" to={"/signup"}>Sign up</Link>
                 <Link className="navbar-button" to={"/login"}>Login</Link>
               </div>
             );
-          default:
-            break;
-        }
     }
   }
 
