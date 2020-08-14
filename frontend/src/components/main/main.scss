@@ -1,3 +1,9 @@
+$blue: #1ba0ed;
+$font-mont: 'Montserrat', sans-serif;
+$red: #F95A60;
+$pink: #FCC3BD;
+$gray: #a0adbb;
+
 .main-container {
     position: relative;
     top: 50px;
@@ -7,4 +13,26 @@
     flex-direction: column;
     flex: 1 0 auto;
     box-sizing: border-box;
+}
+
+
+.navbar-button {
+    z-index: 11;
+    color: $red;
+    font-family: $font-mont;
+    text-decoration: none;
+    font-size: 22px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid $pink;
+    position: relative;
+    height: 100%;
+    margin-right: 5px;
+}
+
+.navbar-button:hover {
+    cursor: pointer;
+    background-color: $red;
+    color: white;
 }

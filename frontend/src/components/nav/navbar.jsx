@@ -19,17 +19,20 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <button onClick={this.logoutUser}>Log out</button>
+          <button 
+            className="navbar-button"
+            onClick={this.logoutUser}>Log out
+          </button>
         </div>
       );
     } else {
         switch (this.props.location.pathname) {
           case "/":
             return (
-              <>
+              <div>
                 <Link className="navbar-button" to={"/signup"}>Sign up</Link>
                 <Link className="navbar-button" to={"/login"}>Login</Link>
-              </>
+              </div>
             );
           default:
             break;
