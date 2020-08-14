@@ -48,7 +48,7 @@ export const signUp = user => dispatch => {
         return dispatch(receiveCurrentUser(decodedUser));
       },
         (error) => {
-          debugger
+   
           return dispatch(receiveSessionErrors(error.response.data));
         }
       )

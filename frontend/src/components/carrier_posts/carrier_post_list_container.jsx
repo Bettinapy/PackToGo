@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   ) : ({ filterOrigin: "", filterDestination: "" }))
 
   let carrier_posts = Object.values(state.carrier_posts) || [];
-    debugger;
+
     return{
         carrier_posts: carrier_posts,
         errors: state.errors,

@@ -16,7 +16,7 @@ class MainSearch extends React.Component {
 
     handleClick(role, e) {
         // e.preventDefault()
-        //debugger
+        //
         return e => {
             if (role === "carrier") {
               if (!this.props.loggedIn) {
@@ -35,7 +35,7 @@ class MainSearch extends React.Component {
     }
 
   handleFilter(type) {
-    //debugger
+    //
     return (e) => {
       let stateCopy = Object.assign({}, this.state);
       stateCopy.search[type] = e.target.value;
@@ -44,7 +44,7 @@ class MainSearch extends React.Component {
   }
 
   handleSearch(e) {
-    //debugger
+    //
     e.preventDefault();
     const serialize = obj => Object.keys(obj)
       .map(key => `${key}=${encodeURIComponent(obj[key])}`)
@@ -64,7 +64,7 @@ class MainSearch extends React.Component {
 
     renderRole() {
     
-      //debugger
+      //
       
         if (this.state.role === 'shipper') {
             return (
@@ -146,7 +146,7 @@ class MainSearch extends React.Component {
     }
 
     renderIcon() {
-      //debugger
+      //
       if (this.props.loggedIn) {
         if (this.state.role === "shipper") {
           return (

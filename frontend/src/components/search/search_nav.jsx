@@ -6,7 +6,7 @@ class SearchNav extends React.Component{
 
         super(props);
         this.state = this.props.search
-        debugger
+    
         this.handleSearch = this.handleSearch.bind(this);
     }
 
@@ -17,7 +17,7 @@ class SearchNav extends React.Component{
     }
 
     handleSearch(e) {
-        debugger
+    
         e.preventDefault();
         const serialize = obj => Object.keys(obj)
             .map(key => `${key}=${encodeURIComponent(obj[key])}`)

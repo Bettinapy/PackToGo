@@ -44,7 +44,7 @@ class CarrierPostShow extends React.Component {
     bookingData.phone = this.state.phone;
     this.props.createBooking(this.props.match.params.carrierPostId, bookingData)
       .then((action) => {
-        debugger
+
         if(action.bookingData){
           this.props.history.push(`/bookings/${action.bookingData.data._id}`)
         }

@@ -13,7 +13,7 @@ class ShipperPostList extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger
+
     if (prevProps.location.search !== this.props.location.search) {
       this.props.clearErrors();
       this.props.fetchShipperPosts(this.props.search);

@@ -6,7 +6,7 @@ import SearchNavContainer from '../search/search_nav_container';
 class CarrierPostList extends React.Component {
 
   componentDidMount() {
-    debugger
+
     this.props.fetchCarrierPosts(this.props.search);
   }
 
@@ -15,7 +15,7 @@ class CarrierPostList extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    debugger
+
     if(prevProps.location.search !== this.props.location.search){
       this.props.clearErrors();
       this.props.fetchCarrierPosts(this.props.search);
@@ -29,7 +29,7 @@ class CarrierPostList extends React.Component {
             <CarrierPostListItem key={carrier_post._id} carrier_post={carrier_post}/>
         ))
     ):(<></>))    
-    debugger
+
     return (
       <>
         <SearchNavContainer />

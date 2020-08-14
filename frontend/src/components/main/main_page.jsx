@@ -1,6 +1,5 @@
 import React from 'react'
 import './main.scss';
-import { Link } from 'react-router-dom';
 import MainSearchContainer from './main_search_container';
 
 //change Link to route to shippers show page instead

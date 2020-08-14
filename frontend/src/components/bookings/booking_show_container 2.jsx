@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
     const booking = state.bookings;
     const currentUser =
       typeof state.session.user !== "undefined" ? state.session.user : {};
-      debugger
+
     return{
         booking: booking || {
             parcelContents: ""

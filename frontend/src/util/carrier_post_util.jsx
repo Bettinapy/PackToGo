@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getCarrierPosts = (search) => {
-    debugger
+
     return axios.get("/api/carrier_posts", {params: {search}})
 };
 
@@ -24,6 +24,6 @@ export const deleteCarrierPost = (carrierPostId) => {
 }
 
 export const createBooking = (carrierPostId, bookingData) => {
-    debugger
+
     return axios.post(`/api/carrier_posts/${carrierPostId}/book`, bookingData)
 }

@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     typeof state.session.user.role !== "undefined" ?
     (state.session.user.role) : ("shipper"))
     : (''));
-  //debugger
+
   return {
     search: search,
     currentUserRole: currentUserRole,

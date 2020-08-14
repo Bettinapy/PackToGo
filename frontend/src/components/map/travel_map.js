@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, Polyline} from 'react-google-maps';
 import mapStyles from './mapStyles';
 import Geocode from 'react-geocode';
