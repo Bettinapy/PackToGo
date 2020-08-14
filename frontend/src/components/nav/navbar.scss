@@ -203,7 +203,7 @@ $gray: #a0adbb;
 
 .post-search-inner-container {
     padding: 64px;
-    min-height: 800px;
+    //min-height: 800px;
     // border-style: border-box;
     // margin: 0 auto;
 }
@@ -248,6 +248,9 @@ $gray: #a0adbb;
     display: flex;
     flex-direction: column;
     margin-top: 60px;
+    margin-right: 20px;
+    width:100%,
+    
 }
 
 .shipper-search-input,
