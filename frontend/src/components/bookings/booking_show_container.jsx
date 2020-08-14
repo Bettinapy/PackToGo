@@ -7,11 +7,21 @@ const mapStateToProps = (state, ownProps) => {
     const booking = state.bookings;
     const currentUser =
       typeof state.session.user !== "undefined" ? state.session.user : {};
-      debugger
+    if (typeof booking.travelDate !== "undefined") {
+      const newDate = new Date(booking.travelDate);
+      booking.travelDate = newDate.toJSON().slice(0, 10);
+    }
     return{
         booking: booking || {
-            parcelContents: ""
-        },
+            origin:'',
+            destination:'',
+            travelDate:'',
+            transportation:'',
+            fee:'',
+            maxWeight:'',
+            parcelContents: "",
+
+          },
         currentUser,
     }
 }

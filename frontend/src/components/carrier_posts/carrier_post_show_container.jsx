@@ -6,13 +6,13 @@ import CarrierPostShow from './carrier_post_show';
 const mapStateToProps = (state, ownProps) => {
 
   const carrier_post = state.carrier_posts[ownProps.match.params.carrierPostId];
-  const currentUserId = typeof state.session.user.id !== "undefined" ? 
-    state.session.user.id : -1;
+  const currentUserId = typeof state.session.user !== 'undefined'? (typeof state.session.user.id !== "undefined" ? 
+    state.session.user.id : -1) : (-1);
   if(typeof carrier_post !==  'undefined'){
     const newDate = new Date(carrier_post.travelDate);
     carrier_post.travelDate = newDate.toJSON().slice(0,10)
   }
-
+  debugger
   return {
     carrier_post: carrier_post || {
       origin: "",

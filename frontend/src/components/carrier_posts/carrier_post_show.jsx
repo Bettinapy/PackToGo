@@ -19,9 +19,14 @@ class CarrierPostShow extends React.Component {
     if(!this.props.loggedIn){
       alert('Please log in / sign up first!')
     } else{
-      console.log(event);
-      const { isOpen } = this.state;
-      this.setState({ isOpen: !isOpen });
+      if (this.props.currentUserId === this.props.carrier_post.carrierId){
+        alert('You are the creator!')
+      } else {
+
+        console.log(event);
+        const { isOpen } = this.state;
+        this.setState({ isOpen: !isOpen });
+      }
 
     }
   };
@@ -62,7 +67,7 @@ class CarrierPostShow extends React.Component {
       this.props
         .deleteCarrierPost(this.props.match.params.carrierPostId)
         .then(() => {
-          return this.props.history.push("/carriers/posts");
+          return this.props.history.push("/");
         });
     }
   }
@@ -115,13 +120,13 @@ class CarrierPostShow extends React.Component {
             </div>
             <div className="carrier-show-col-containter">
               <h3>Fee</h3>
-              <p>${this.props.carrier_post.fee}</p>
+              <p>$ {this.props.carrier_post.fee}</p>
             
             </div>
 
             <div className="carrier-show-col-containter">
               <h3>Max Weight</h3>
-              <p>{this.props.carrier_post.maxWeight}lbs</p>
+              <p>{this.props.carrier_post.maxWeight} lbs</p>
          
             </div>
             <div className="carrier-show-col-containter">
