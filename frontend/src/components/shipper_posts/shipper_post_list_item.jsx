@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 class ShipperPostListItem extends React.Component{
     render(){
         return (
-          <div>
-            <Link to={`/shippers/posts/${this.props.shipper_post._id}`}>
+          <div className="shipper-post-list-item-container">
+            <Link
+              className="shipper-post-show-item"
+              to={`/shippers/posts/${this.props.shipper_post._id}`}
+            >
               <div>
-                From {this.props.shipper_post.origin} to {this.props.shipper_post.destination}
+                <div className="shipper-post-list-item-left">
+                  From {this.props.shipper_post.origin} to {this.props.shipper_post.destination}
+                </div>
               </div>
             </Link>
           </div>
