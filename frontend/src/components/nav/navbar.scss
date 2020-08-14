@@ -91,7 +91,12 @@ $gray: #a0adbb;
 .hamburger-button > img {
     height: 25px;
     width: auto;
-    background-color: none;
+}
+
+.hamburger-button {
+    background-color: white;
+    border: none;
+    padding: 5px;
 }
 
 
@@ -341,6 +346,10 @@ input[type="date"] {
     .navbar-left-container {
         width: 100%;
         
+    }
+
+    .navbar-button {
+        display: none;
     }
 
     .hamburger-container {
