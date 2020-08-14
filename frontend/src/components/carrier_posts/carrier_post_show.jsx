@@ -17,7 +17,10 @@ class CarrierPostShow extends React.Component {
 
   toggleModal = (event) => {
     if(!this.props.loggedIn){
-      alert('Please log in / sign up first!')
+      const choice = window.confirm("Please log in or sign up first!");
+      if (choice === true) {
+        this.props.history.push('/login')
+      }
     } else{
       if (this.props.currentUserId === this.props.carrier_post.carrierId){
         alert('You are the creator!')
