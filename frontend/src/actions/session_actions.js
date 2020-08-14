@@ -44,13 +44,14 @@ export const signUp = user => dispatch => {
         localStorage.setItem("jwtToken", token);
         APIUtil.setAuthToken(token);
         const decodedUser = jwt_decode(token);
-      
+        
         return dispatch(receiveCurrentUser(decodedUser));
-      })
-      .catch((error) => {
-      
-        return dispatch(receiveSessionErrors(error.response.data));
-      });
+      },
+        (error) => {
+          debugger
+          return dispatch(receiveSessionErrors(error.response.data));
+        }
+      )
 }
 
 export const login = user => dispatch => {
@@ -62,8 +63,9 @@ export const login = user => dispatch => {
             APIUtil.setAuthToken(token);
             const decodedUser = jwt_decode(token);
             return dispatch(receiveCurrentUser(decodedUser));
-        })
-        .catch(error => {
-            dispatch(receiveSessionErrors(error.response.data));
-        });
+        },
+          error => {
+            return(dispatch(receiveSessionErrors(error.response.data)));
+          }
+        )
 };

@@ -1,6 +1,7 @@
 // added by george for post-carrier-model 8-11-2020
 const express = require("express");
 const CarrierPost = require("../../models/Carrier_post");
+const Booking = require("../../models/Booking");
 const User = require("../../models/User");
 const router = express.Router();
 const keys = require("../../config/keys");
@@ -106,6 +107,35 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
         .catch(() => res.status(404).json({error: "Post not found"}))
 
 });
+
+router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
+
+    let currentCarrierId;
+
+    CarrierPost.findById(req.params.id)
+        .then(post => {
+            currentCarrierId = post.carrierId;
+
+            const newBooking = new Booking({
+                carrierId: currentCarrierId,
+                shipperId: req.user.id,
+                carrierPostId: req.params.id,
+                parcelContents: req.body.parcelContents,
+                phone: req.body.phone        
+        
+            });
+        
+            newBooking.save()
+                .then(booking => res.json(booking))
+                .catch(errors => res.send(errors));
+        })
+        .catch(errors => res.send(errors));
+        
+        
+    
+});
+
+
 
 router.get('/user/:id', (req,res) => {
     const allUsersPosts = {};
