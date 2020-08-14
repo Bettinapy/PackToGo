@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './carrier_post_show.scss';
 
 class CarrierPostShow extends React.Component{
     constructor(props){
