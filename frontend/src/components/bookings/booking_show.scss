@@ -15,10 +15,38 @@ $light-gray: #f0f0f0;
 }
 
 .booking-show-container{
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .booking-info-container{
     color:$red;
-    
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.booking-info-show-container{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+}
+
+.booking-info-small-container{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: left;
+    flex-wrap: nowrap;
+}
+
+.booking-info-small-container > h3 {
+    text-align: left;
+    width: 60%;
+}
+
+.booking-info-small-container > p {
+    text-align: left;
+    width: 40%;
 }
