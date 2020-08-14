@@ -23,7 +23,7 @@ class ShipperPostShow extends React.Component{
           this.props
             .deleteShipperPost(this.props.match.params.shipperPostId)
             .then(() => {
-              return this.props.history.push("/shippers/posts");
+              return this.props.history.push("/");
             });
         }
     }
@@ -31,12 +31,18 @@ class ShipperPostShow extends React.Component{
         const userAuth =
           this.props.currentUserId === this.props.shipper_post.shipperId ? (
             <>
-              <button>
-                <Link to={`/shippers/posts/${this.props.match.params.shipperPostId}/edit`}>
+              <div className="user-button-container">
+                <Link
+                  className="user-button"
+                  to={`/shippers/posts/${this.props.match.params.shipperPostId}/edit`}
+                >
                   edit
                 </Link>
-              </button>
-              <button onClick={ this.handleDelete }>delete</button>
+
+                <button className="user-button" onClick={this.handleDelete}>
+                  delete
+                </button>
+              </div>
             </>
           ) : (
             <></>
@@ -44,35 +50,37 @@ class ShipperPostShow extends React.Component{
       
 
         return (
-          <div>
-            <div>
-              <h3>Origin</h3>
-              <p>{this.props.shipper_post.origin}</p>
-              
+          <div className="carrier-post-show-container">
+            <div className="carrier-post-header">
+              From {this.props.shipper_post.origin} to{" "}
+              {this.props.shipper_post.destination}
             </div>
-            <div>
-              <h3>Destination</h3>
-              <p>{this.props.shipper_post.destination}</p>
-              
-            </div>
+            <div className="carrier-show-container">
+              <div className="carrier-show-col-containter">
+                <h3>Origin</h3>
+                <p>{this.props.shipper_post.origin}</p>
+              </div>
+              <div className="carrier-show-col-containter">
+                <h3>Destination</h3>
+                <p>{this.props.shipper_post.destination}</p>
+              </div>
 
-            <div>
-              <h3>Parcel Contents</h3>
-              <p>{this.props.shipper_post.parcelContents}</p>
-           
-            </div>
+              <div className="carrier-show-col-containter">
+                <h3>Parcel Contents</h3>
+                <p>{this.props.shipper_post.parcelContents}</p>
+              </div>
 
-            <div>
-              <h3>Max Weight</h3>
-              <p>{this.props.shipper_post.maxWeight}</p>
-         
-            </div>
-            
-            <div>
+              <div className="carrier-show-col-containter">
+                <h3>Max Weight</h3>
+                <p>{this.props.shipper_post.maxWeight} lbs</p>
+              </div>
+
+              {/* <div className="carrier-show-col-containter">
                 <p>Shipper</p>
                 <p>{this.props.shipper_post.shipperId}</p>
+              </div> */}
+              {userAuth}
             </div>
-            {userAuth}
           </div>
         );
     }
