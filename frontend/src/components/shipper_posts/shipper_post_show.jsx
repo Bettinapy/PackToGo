@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './shipper_post_list.scss';
 
 class ShipperPostShow extends React.Component{
     constructor(props){
