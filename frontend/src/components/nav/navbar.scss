@@ -25,6 +25,7 @@ $gray: #a0adbb;
 .navbar-right-container {
     box-shadow: none;
     position: relative;
+    height: 100%;
 }
 
 .logo-img {
@@ -60,9 +61,8 @@ $gray: #a0adbb;
     border-radius: 5px;
     padding: 5px;
     border: 1px solid $pink;
-    height: 30px;
     position: relative;
-    top: 30%;
+    height: 100%;
     margin-right: 5px;
 }
 

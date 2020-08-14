@@ -44,7 +44,7 @@ class CarrierPostShow extends React.Component{
       
 
         return (
-          <div>
+          <div className="carrier-post-show-container">
             <div>
               <h3>Origin</h3>
               <p>{this.props.carrier_post.origin}</p>
