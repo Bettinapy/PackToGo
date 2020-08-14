@@ -52,7 +52,6 @@ class SearchNav extends React.Component{
         ):(<></>))
         return (
           <div className="search-form-container">
-            <div className="form-wrapper">
               <form className="search-form" onSubmit={this.handleSearch}>
                 <div>
                   <label 
@@ -88,7 +87,6 @@ class SearchNav extends React.Component{
                   value="search"
                 />
               </form>
-            </div>
           </div>
         );
     }

@@ -108,9 +108,43 @@ class CarrierPostShow extends React.Component {
             <p>{this.props.carrier_post.fee}</p>
           </div>
 
-          <div>
-            <h3>Max Weight</h3>
-            <p>{this.props.carrier_post.maxWeight}</p>
+        return (
+          <div className="carrier-post-show-container">
+            <div>
+              <h3>Origin</h3>
+              <p>{this.props.carrier_post.origin}</p>
+              
+            </div>
+            <div>
+              <h3>Destination</h3>
+              <p>{this.props.carrier_post.destination}</p>
+              
+            </div>
+            <div>
+              <h3>Travel Date</h3>
+              <p>{this.props.carrier_post.travelDate}</p>
+            
+            </div>
+            <div>
+              <h3>fee</h3>
+              <p>{this.props.carrier_post.fee}</p>
+            
+            </div>
+
+            <div>
+              <h3>Max Weight</h3>
+              <p>{this.props.carrier_post.maxWeight}</p>
+         
+            </div>
+            <div>
+              <h3>Transportation</h3>
+              <p>{this.props.carrier_post.transportation}</p>
+            </div>
+            <div>
+                <p>Carrier</p>
+                <p>{this.props.carrier_post.carrierId}</p>
+            </div>
+            {userAuth}
           </div>
           <div>
             <h3>Transportation</h3>
