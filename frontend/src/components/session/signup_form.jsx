@@ -169,7 +169,11 @@ class SignupForm extends React.Component {
                     Carrier
                   </label>
                 </div>
-                <input type="submit" value="Submit" />
+                <input 
+                  className="session-submit"
+                  type="submit" 
+                  value="Submit" 
+                />
                 {this.renderErrors()}
                 {otherForm()}
               </div>
