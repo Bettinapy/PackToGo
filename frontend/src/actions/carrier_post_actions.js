@@ -53,6 +53,7 @@ export const createCarrierPost = (carrierPost) => {
     }
 }
 
+
 export const updateCarrierPost = (carrierPost) => {
     return dispatch => {
         return CarrierPostUtil.updateCarrierPost(carrierPost)

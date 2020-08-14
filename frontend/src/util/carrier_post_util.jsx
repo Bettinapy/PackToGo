@@ -22,3 +22,8 @@ export const updateCarrierPost = (carrierPostData) => {
 export const deleteCarrierPost = (carrierPostId) => {
     return axios.delete(`/api/carrier_posts/${carrierPostId}`);
 }
+
+export const createBooking = (carrierPostId, bookingData) => {
+    debugger
+    return axios.post(`/api/carrier_posts/${carrierPostId}/book`, bookingData)
+}
