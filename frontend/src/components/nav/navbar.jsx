@@ -21,12 +21,12 @@ class NavBar extends React.Component {
   getLinks() {
     const shipperIcon = (<img
       className="search-icon"
-      src="https://poblano-app-seeds.s3.amazonaws.com/icons8-package-48.png"
+      src="https://poblano-app-seeds.s3.amazonaws.com/navbarshipper.png"
       alt="shipper-icon"/>)
 
     const carrierIcon = (<img
       className="search-icon-clicked"
-      src="https://poblano-app-seeds.s3.amazonaws.com/icons8-supplier-48.png"
+      src="https://poblano-app-seeds.s3.amazonaws.com/navbarcarrier.png"
       alt="carrier-icon"/>)
 
     if (this.props.loggedIn) {
