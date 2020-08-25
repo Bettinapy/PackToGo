@@ -6,7 +6,7 @@ import CarrierPostForm from './carrier_post_form';
 const mapStateToProps = (state, ownProps) => {
 
   return {
-    carrier_post: Object.values(state.carrier_posts)[0] || {
+    carrier_post: {
       origin: "",
       destination: "",
       travelDate: new Date().toJSON().slice(0, 10),
