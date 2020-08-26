@@ -26,6 +26,7 @@ router.get('/:id', (req,res) => {
             fullObject.carrierId = booking.carrierId;
             fullObject.shipperId = booking.shipperId;
             fullObject.carrierPostId = booking.carrierPostId;
+            //fullObject.senderName = booking.shipperId.handle;
             fullObject.phone = booking.phone;
             User.findById(fullObject.carrierId)
                 .then(user => {
