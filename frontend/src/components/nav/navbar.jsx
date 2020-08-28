@@ -34,7 +34,7 @@ class NavBar extends React.Component {
       let link = role === 'shipper' ? '/shippers/posts/create' : '/carriers/posts/create'
       let search = role === 'shipper' ? '/carriers/posts/search' : '/shippers/posts/search'
       return (
-        <div className="navbar-user-container">
+        <div className="navbar-user-container" >
           <div className="user-greeting">Hi, {this.props.currentUser.handle}</div>
           <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
           <Link className="navbar-button" to={link}>
@@ -64,7 +64,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div className="navbar-main-container">
+      <div className="navbar-main-container" >
         <div className="navbar-left-container">
             <Link className="logo-link" to={"/"}>
             <img className="logo-img" src="https://minicram-dev.s3.amazonaws.com/images/packtogo-logo.png" alt="logo-img"/>

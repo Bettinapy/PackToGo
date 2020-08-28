@@ -60,15 +60,20 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
 
 router.get('/', (req, res) => {
     const allPosts = {};
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 7);
+    const newDate = currentDate.toJSON().slice(0, 10);
     const search = JSON.parse(req.query.search);
     const filterOrigin = search["filterOrigin"] || '';
     const filterDestination = search["filterDestination"] || '';
     const filterDate = search["filterDate"] || new Date().toJSON().slice(0, 10);
-    const formatDate = new Date(filterDate); 
-    CarrierPost.find(
+    const dateBefore = search["dateBefore"] || newDate;
+    const formatDateAfter = new Date(filterDate); 
+    const formatDateBefore = new Date(dateBefore); 
+    CarrierPost.find( 
         {"origin": { "$regex": filterOrigin, "$options": "i" },
          "destination": { "$regex": filterDestination, "$options": "i" },
-         "travelDate": {$gte: formatDate}
+        "travelDate": { $gte: formatDateAfter, $lt: formatDateBefore}
             })
         .then(posts => {
             posts.forEach(post => {

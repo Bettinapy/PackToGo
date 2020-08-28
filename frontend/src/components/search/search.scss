@@ -5,18 +5,55 @@ $pink: #FCC3BD;
 $gray: #a0adbb;
 $light-gray: #f0f0f0;
 
+.search-box-container{
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 50px;
+    font-family: $font-mont;
+    left: 40%;
+    
+}
+
+.search-box-box{
+    display: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.search-box{
+    margin: auto;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 20px;
+    border-radius: 9px;
+    border: 1px solid $pink;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 15px;
+    margin-top: 5px;
+}
+
 .search-form-container {
     display: flex;
     overflow: hidden;
     position: fixed;
-    width: 90%;
+    width: 100%;
     top: 50;
-    left: 5%;
+
     z-index: 5;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    //box-shadow: 0 0 10px rgba(0,0,0,.1);
     justify-content: center;
-    border-radius: 10px;
+    align-items: center;
+    height: 50px;
+    //border-radius: 10px;
     // transform: translate(-50%, -50%);
 }
 
@@ -24,7 +61,7 @@ $light-gray: #f0f0f0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    //width: 100%;
     height: 100%;
     border-radius: 10px;
     background-color: white;
@@ -35,6 +72,8 @@ $light-gray: #f0f0f0;
 
 .search-form > div {
     display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: $font-mont;
     margin-top: 10px;
     width: 100%;
@@ -47,26 +86,28 @@ $light-gray: #f0f0f0;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    text-align: right;
+    text-align: center;
     width: 100%;
-    line-height: 36px;
+    line-height: 20px;
     margin-bottom: 10px;
-    font-weight: 700;
+    font-weight: 500;
     margin-right: 10px;
     margin-left: 10px;
+    align-items: center;
 }
 
 .search-form-label > input {
     height: 20px;
-    flex: 0 0 200px;
+    flex: 0 0 120px;
     margin-left: 10px;
     outline: none;
     border: 1px solid $pink;
     border-radius: 5px;
     font-family: $font-mont;
-    font-size: 15px;
+    font-size: 12px;
     padding: 5px;
     margin-right: 10px;
+    
 }
 
 .search-form-label > input:hover {
@@ -109,7 +150,7 @@ input.carrier-list-search-button[type="submit"] {
     background-color: white;
     border: 1px solid $gray;
     color: black;
-    font-size: 24px;
+    font-size: 17px;
     font-family: $font-mont;
     font-weight: 500;
     margin-right: 10px;
@@ -121,6 +162,14 @@ input.carrier-list-search-button[type="submit"]:hover {
     cursor: pointer;
     background-color: $red;
     color: white;
+}
+
+.hide-search{
+    display: none;
+}
+
+.show-search{
+    display: block;
 }
 
 @media screen and (max-width: 1200px) {
