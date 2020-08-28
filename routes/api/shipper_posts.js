@@ -1,6 +1,7 @@
 const express = require("express");
 const ShipperPost = require("../../models/Shipper_post");
 const User = require("../../models/User");
+const Booking = require("../../models/Booking");
 const router = express.Router();
 const keys = require("../../config/keys");
 const jwt = require('jsonwebtoken');
@@ -94,6 +95,28 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
         })
         .catch(() => res.status(404).json({error: "Post not found"}))
 
+});
+
+router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
+    
+
+    ShipperPost.findById(req.params.id)
+        .then(post => {
+            currentShipperId = post.shipperId;
+            
+            const newBooking = new Booking({
+                carrierId: req.user.id,
+                shipperId: currentShipperId,
+                shipperPostId: post.id,
+                parcelContents: post.parcelContents
+            });
+        
+            newBooking.save()
+                .then(booking => res.json(booking))
+                .catch(errors => res.send(errors));
+        })
+        .catch(errors => res.send(errors));
+        
 });
 
 module.exports = router;

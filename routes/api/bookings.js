@@ -66,11 +66,17 @@ router.get('/', (req,res) => {
 
 });
 
+// router.get('/shipper/:id', (req,res) => {
+//     Booking.where({shipperId: req.params.id})
+//         .then(bookings => res.json(bookings))
+//         .catch(errors => res.json(errors))
+// })
+
 router.get('/shipper/:id', (req,res) => {
-    Booking.where({shipperId: req.params.id})
+    Booking.where({shipperId: req.params.id}).populate('carrierPostId')
         .then(bookings => res.json(bookings))
         .catch(errors => res.json(errors))
-})
+}) 
 
 router.get('/carrier/:id', (req,res) => {
     Booking.where({carrierId: req.params.id})

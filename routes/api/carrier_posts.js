@@ -136,8 +136,6 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
         })
         .catch(errors => res.send(errors));
         
-        
-    
 });
 
 
@@ -163,5 +161,40 @@ router.get('/user/:id', (req,res) => {
         .catch(err => res.json(err))
 });
 
+
+router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
+    const { errors, isValid } = validateBookingCreate(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    let currentCarrierId;
+
+    CarrierPost.findById(req.params.id)
+        .then(post => {
+            currentCarrierId = post.carrierId;
+
+            const newBooking = new Booking({
+                carrierId: currentCarrierId,
+                shipperId: req.user.id,
+                carrierPostId: req.params.id,
+                parcelContents: req.body.parcelContents,
+                phone: req.body.phone        
+        
+            });
+        
+            newBooking.save()
+                .then(booking => res.json(booking))
+                .catch(errors => res.send(errors));
+        })
+        .catch(errors => res.send(errors));
+        
+        
+    
+});
+
+
+
+
+
 module.exports = router;
-// finished by george for post-carrier-model 8-11-2020

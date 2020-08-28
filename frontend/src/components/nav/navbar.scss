@@ -375,6 +375,11 @@ input[type="date"] {
         display: none;
     }
 
+    .navbar-main-container {
+        overflow: unset;
+        z-index:12;
+    }
+
     .hamburger-container {
         display: flex;
         flex-direction: row-reverse;
