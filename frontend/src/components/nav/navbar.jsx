@@ -6,7 +6,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+        dropdownClass: "hidden"
     }
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
@@ -58,6 +58,10 @@ class NavBar extends React.Component {
     }
   }
 
+  toggleDropdown() {
+    this.state.dropdownClass === "hidden" ? this.setState({dropdownClass: ""}) : this.setState({dropdownClass: "hidden"});
+  }
+
   render() {
     return (
       <div className="navbar-main-container">
@@ -69,7 +73,13 @@ class NavBar extends React.Component {
         <div className="navbar-right-container">
             {this.getLinks()}
             <div className = "hamburger-container">
-              <button className="hamburger-button"><img src="https://minicram-dev.s3.amazonaws.com/images/menu.png" alt=""/></button>
+              <button onClick={()=>this.toggleDropdown()} className="hamburger-button">
+                <img src="https://minicram-dev.s3.amazonaws.com/images/menu.png" alt=""/>
+              </button>
+              <div className ={`hamburger-dropdown ${this.state.dropdownClass}`}>
+                  <div className = "hamburger-sublink-container"><Link to={"/signup"}>Sign up</Link></div>
+                  <div className = "hamburger-sublink-container"><Link to={"/login"}>Login</Link></div>
+              </div>
             </div>
         </div>
       </div>

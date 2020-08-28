@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const CarrierPost = require('./Carrier_post');
+const ShipperPost = require('./Shipper_post');
+
 const Schema = mongoose.Schema;
 
 const BookingSchema = new Schema({
@@ -15,8 +18,13 @@ const BookingSchema = new Schema({
     },
     carrierPostId: {
         type: Schema.Types.ObjectId,
-        ref:'carrierPosts',
-        required: true
+        ref: CarrierPost,
+        required: false
+    },
+    shipperPostId: {
+        type: Schema.Types.ObjectId,
+        ref: ShipperPost,
+        required: false
     },
     parcelContents: {
         type: String,

@@ -124,6 +124,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   })
 
 
+
 router.get('/testquery', (req,res) => {
     User.findOne({$or: [{handle: req.body.handle},{email: req.body.email}]})
         .then(user => {
