@@ -39,7 +39,7 @@ class SearchNav extends React.Component{
         const travelDate = (this.props.history.location.pathname.includes('carriers') ? (
             <label
                 className="search-form-label"
-                htmlFor="date">Travel Date
+                htmlFor="date">Date After
                 <input
                     className="search-form-input"
                     type="date" 
@@ -61,6 +61,7 @@ class SearchNav extends React.Component{
                     <input
                       className="search-form-input"
                       id="origin"
+          
                       onChange={this.handleFilter("filterOrigin")}
                       value={this.state.filterOrigin}
                     />
