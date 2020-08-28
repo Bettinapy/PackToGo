@@ -21,3 +21,7 @@ export const updateShipperPost = (shipperPostData) => {
 export const deleteShipperPost = (shipperPostId) => {
     return axios.delete(`/api/shipper_posts/${shipperPostId}`);
 }
+
+export const getUserShipperPost = (userId) => {
+    return axios.get(`/api/shipper_posts/user/${userId}`)
+}

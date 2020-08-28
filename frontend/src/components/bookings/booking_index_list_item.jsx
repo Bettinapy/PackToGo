@@ -6,16 +6,16 @@ export const BookingIndexListItem = (props) => {
             <div>
                 <div className="carrier-post-list-item-left">
                     <span>
-                        Phone number: {props.booking.phone}
+                        Phone number: {props.phone}
                     </span>
                 </div>
                 <div className="carrier-post-list-item-left">
-                    Parcel Contents: {props.booking.parcelContents}
+                    Parcel Contents: {props.parcelContents}
                 </div>
             </div>
             <div className="carrier-post-list-item-right">
                 <div>
-                    Confirmation Code: {props.booking.carrierPostId}
+                    Confirmation Code: {props.carrierPostId}
                 </div>
             </div>
         </div>

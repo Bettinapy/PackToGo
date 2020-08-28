@@ -38,10 +38,11 @@ class LoginForm extends React.Component {
         email: this.state.email,
         password: this.state.password,
     };
-
+    
     this.props.login(user).then(action => {
       if (action.currentUser){
-        // this.props.history.push(`/user`);
+        // this.props.fetchBookings(action.currentUser.role, action.currentUser.id)
+        this.props.history.push(`/user`);
         // if (action.currentUser.role === "shipper") {
         //   this.props.history.push(`/user`);
         // } else {

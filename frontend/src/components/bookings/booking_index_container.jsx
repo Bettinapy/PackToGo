@@ -1,16 +1,16 @@
-import { connect } from 'react-redux';
-import BookingsIndex from './booking_index';
+// import { connect } from 'react-redux';
+// import BookingsIndex from './booking_index';
 
-const mapStateToProps = (state) => {
-    return ({
-        bookings: state.bookings
-    })
-};
+// const mapStateToProps = (state) => {
+//     return ({
+//         bookings: state.bookings
+//     })
+// };
 
-const mapDispatchToProps = (dispatch) => {
-    return ({
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
         
-    })
-};
+//     })
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookingsIndex);
+// export default connect(mapStateToProps, mapDispatchToProps)(BookingsIndex);

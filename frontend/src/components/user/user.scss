@@ -1,0 +1,21 @@
+$font-mont: 'Montserrat', sans-serif;
+$blue: #1ba0ed;
+$gray: #a0adbb;
+$red: #F95A60;
+$pink: #FCC3BD;
+
+.user-container {
+    position: relative;
+    top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+}

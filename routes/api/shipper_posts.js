@@ -69,6 +69,12 @@ router.get('/', (req, res) => {
         .catch(err => res.json(err))
 });
 
+router.get('/user/:id', (req,res) => {
+    ShipperPost.where({shipperId: req.params.id})
+        .then(posts => res.json(posts))
+        .catch(errors => res.json(errors))
+});
+
 router.get('/:id', (req,res) => {
     //const onePost = {};
 

@@ -4,6 +4,7 @@ import { receiveSessionErrors } from "./session_actions";
 export const RECEIVE_SHIPPERPOSTS = "RECEIVE_SHIPPERPOSTS";
 export const RECEIVE_SHIPPERPOST = "RECEIVE_SHIPPERPOST";
 export const REMOVE_SHIPPERPOST = "REMOVE_SHIPPERPOST";
+export const RECEIVE_USER_SHIPPERPOSTS = "RECEIVE_USER_SHIPPERPOSTS";
 
 export const receiveShipperPosts = (shipperPosts) => {
     return {
@@ -18,6 +19,13 @@ export const receiveShipperPost = (shipperPost) => {
         shipperPost,
     };
 };
+
+export const receiveUserShipperPosts = (userShipperPosts) => {
+    return {
+        type: RECEIVE_USER_SHIPPERPOSTS,
+        userShipperPosts
+    }
+}
 
 export const removeShipperPost = (shipperPostId) => {
  
@@ -39,6 +47,14 @@ export const fetchShipperPost = (shipperPostId) => {
     return dispatch => {
         return ShipperPostUtil.getShipperPost(shipperPostId)
             .then((payload) => dispatch(receiveShipperPost(payload)),
+                (err) => dispatch(receiveSessionErrors(err.response.data)))
+    }
+}
+
+export const fetchUserShipperPosts = (userId) => {
+    return dispatch => {
+        return ShipperPostUtil.getUserShipperPost(userId)
+            .then((payload) => dispatch(receiveUserShipperPosts(payload)),
                 (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
 }
