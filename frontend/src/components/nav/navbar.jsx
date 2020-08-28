@@ -10,6 +10,7 @@ class NavBar extends React.Component {
     }
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.handleBookings = this.handleBookings.bind(this);
   }
 
   logoutUser(e) {
@@ -37,6 +38,7 @@ class NavBar extends React.Component {
         <div className="navbar-user-container">
           <div className="user-greeting">Hi, {this.props.currentUser.handle}</div>
           <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
+          <div className="navbar-button" onClick={this.handleBookings}>Bookings</div>
           <Link className="navbar-button" to={link}>
             Create a post
           </Link>
@@ -56,6 +58,18 @@ class NavBar extends React.Component {
               </div>
             );
     }
+  }
+
+  handleBookings(e) {
+    e.preventDefault();
+    debugger;
+    this.props.fetchBookings(this.props.currentUser.role, this.props.currentUser.id)
+      .then((action) => {
+        debugger;
+        if (action.bookingsData) {
+          this.props.history.push(`/bookings/${this.props.currentUser.role}/${this.props.currentUser.id}`);
+        }
+      });
   }
 
   render() {

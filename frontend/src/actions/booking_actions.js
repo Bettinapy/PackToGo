@@ -3,11 +3,19 @@ import * as BookingUtil from "../util/booking_util";
 import { receiveSessionErrors } from "./session_actions";
 
 export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
+export const RECEIVE_BOOKINGS = "RECEIVE_BOOKINGS";
 
 export const receiveBooking = (bookingData) => {
   return {
     type: RECEIVE_BOOKING,
     bookingData,
+  };
+};
+
+export const receiveBookings = (bookingsData) => {
+  return {
+    type: RECEIVE_BOOKINGS,
+    bookingsData
   };
 };
 
@@ -17,6 +25,15 @@ export const fetchBooking = (bookingId) => {
     return BookingUtil.getBooking(bookingId)
       .then((payload) => dispatch(receiveBooking(payload)),
             (err) => dispatch(receiveSessionErrors(err.response.data)) )
+  }
+}
+
+export const fetchBookings = (role, userId) => {
+  return dispatch => {
+    debugger;
+    return BookingUtil.getBookings(role, userId)
+      .then((payload) => dispatch(receiveBookings(payload)),
+          (err) => dispatch(receiveSessionErrors(err.response.data)))
   }
 }
 

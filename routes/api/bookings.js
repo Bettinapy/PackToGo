@@ -16,7 +16,7 @@ ObjectId = Schema.ObjectId;
 // booking show route
 router.get('/:id', (req,res) => {
 
-    const fullObject = {}
+    const fullObject = {};
     
     Booking.findById(req.params.id)
         //.then(booking => res.json(booking))
@@ -42,7 +42,6 @@ router.get('/:id', (req,res) => {
                             res.json(fullObject);
                         })
                 })
-
         })
         .catch(errors => res.json(errors))
     
@@ -59,7 +58,7 @@ router.get('/', (req,res) => {
             bookings.forEach(booking => {
                 allBookings[booking.id] = booking;
             })
-            res.json(allBookings)
+            res.json(allBookings);
         })
         .catch(errors => res.json(errors))
 
@@ -67,7 +66,29 @@ router.get('/', (req,res) => {
 
 router.get('/shipper/:id', (req,res) => {
     Booking.where({shipperId: req.params.id})
-        .then(bookings => res.json(bookings))
+        // .then(bookings => res.json(bookings))
+        .then(bookings => {
+            // let bookingsCopy = Object.assign([], bookings);
+
+            let bookingsArray = bookings.map(booking => {
+
+                let resObject = {};
+                // CarrierPost.where({_id: booking.carrierPostId}).then(post => {
+                //     console.log(post);
+                // })
+                CarrierPost.where({ _id: booking.carrierPostId }).then(post => {
+                    resObject.travelDate = post[0].travelDate;
+                    resObject.bookingId = booking.id;
+                    resObject.origin = post[0].origin;
+                    resObject.destination = post[0].destination;
+                    console.log(post);
+                    console.log(resObject);
+                    // return resObject;
+                })
+                return resObject;
+            })
+            res.json(bookingsArray);
+        })
         .catch(errors => res.json(errors))
 })
 

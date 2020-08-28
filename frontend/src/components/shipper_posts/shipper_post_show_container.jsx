@@ -5,7 +5,7 @@ import ShipperPostShow from './shipper_post_show';
 const mapStateToProps = (state, ownProps) => {
 
   const shipper_post = state.shipper_posts[ownProps.match.params.shipperPostId];
-  const currentUserId = typeof state.session.user.id !== "undefined" ? 
+  const currentUserId = typeof state.session.user !== "undefined" ? 
     state.session.user.id : -1;
 
   return {

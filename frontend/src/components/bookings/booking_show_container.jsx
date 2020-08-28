@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
       typeof state.session.user !== "undefined" ? state.session.user : {};
     if (typeof booking.travelDate !== "undefined") {
       const newDate = new Date(booking.travelDate);
+      debugger;
       booking.travelDate = newDate.toJSON().slice(0, 10);
     }
     return{

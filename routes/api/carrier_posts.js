@@ -111,7 +111,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
 
 router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
     const { errors, isValid } = validateBookingCreate(req.body);
-
+    debugger;
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -119,6 +119,7 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
 
     CarrierPost.findById(req.params.id)
         .then(post => {
+
             currentCarrierId = post.carrierId;
 
             const newBooking = new Booking({

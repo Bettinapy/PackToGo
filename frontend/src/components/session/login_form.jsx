@@ -41,12 +41,12 @@ class LoginForm extends React.Component {
 
     this.props.login(user).then(action => {
       if (action.currentUser){
-        if (action.currentUser.role === "shipper") {
-  
-          this.props.history.push('/carriers/posts');
-        } else {
-          this.props.history.push('/shippers/posts');
-        }
+        // this.props.history.push(`/user`);
+        // if (action.currentUser.role === "shipper") {
+        //   this.props.history.push(`/user`);
+        // } else {
+        //   this.props.history.push(`/user`);
+        // }
       }
     });
   }

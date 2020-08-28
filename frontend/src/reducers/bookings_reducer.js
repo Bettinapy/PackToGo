@@ -1,4 +1,4 @@
-import {RECEIVE_BOOKING} from '../actions/booking_actions';
+import {RECEIVE_BOOKING, RECEIVE_BOOKINGS} from '../actions/booking_actions';
 
 const BookingReducer = (state={}, action) => {
     Object.freeze(state);
@@ -7,6 +7,8 @@ const BookingReducer = (state={}, action) => {
     switch(action.type){
         case RECEIVE_BOOKING:
             return action.bookingData.data;
+        case RECEIVE_BOOKINGS:
+            return action.bookingsData.data;
         default:
             return state;
     }
