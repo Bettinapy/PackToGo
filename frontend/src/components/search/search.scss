@@ -5,6 +5,41 @@ $pink: #FCC3BD;
 $gray: #a0adbb;
 $light-gray: #f0f0f0;
 
+.search-box-container{
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 50px;
+    font-family: $font-mont;
+    left: 40%;
+    
+}
+
+.search-box-box{
+    display: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.search-box{
+    margin: auto;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 20px;
+    border-radius: 9px;
+    border: 1px solid $pink;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 15px;
+    margin-top: 5px;
+}
+
 .search-form-container {
     display: flex;
     overflow: hidden;
@@ -127,6 +162,14 @@ input.carrier-list-search-button[type="submit"]:hover {
     cursor: pointer;
     background-color: $red;
     color: white;
+}
+
+.hide-search{
+    display: none;
+}
+
+.show-search{
+    display: block;
 }
 
 @media screen and (max-width: 1200px) {
