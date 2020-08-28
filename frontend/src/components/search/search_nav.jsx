@@ -37,6 +37,7 @@ class SearchNav extends React.Component{
 
     render(){
         const travelDate = (this.props.history.location.pathname.includes('carriers') ? (
+            <>
             <label
                 className="search-form-label"
                 htmlFor="date">Date After
@@ -49,6 +50,19 @@ class SearchNav extends React.Component{
                     value={this.state.filterDate} 
                 />
             </label>
+            <label
+              className="search-form-label"
+              htmlFor="date">Date Before
+                <input
+                className="search-form-input"
+                type="date"
+                min={this.state.filterDate}
+                id="date"
+                onChange={this.handleFilter('dateBefore')}
+                value={this.state.dateBefore}
+              />
+            </label>
+            </>
         ):(<></>))
         return (
           <div className="search-form-container">
