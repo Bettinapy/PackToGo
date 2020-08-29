@@ -16,6 +16,11 @@ class SearchNav extends React.Component{
         }
     }
 
+  handleSearchBox(e){
+    e.preventDefault();
+    document.getElementById("search-bar").classList.add("show-search")
+  }
+
     handleSearch(e) {
     
         e.preventDefault();
@@ -37,9 +42,10 @@ class SearchNav extends React.Component{
 
     render(){
         const travelDate = (this.props.history.location.pathname.includes('carriers') ? (
+            <>
             <label
                 className="search-form-label"
-                htmlFor="date">Travel Date
+                htmlFor="date">Date After
                 <input
                     className="search-form-input"
                     type="date" 
@@ -49,9 +55,37 @@ class SearchNav extends React.Component{
                     value={this.state.filterDate} 
                 />
             </label>
+            <label
+              className="search-form-label"
+              htmlFor="date">Date Before
+                <input
+                className="search-form-input"
+                type="date"
+                min={this.state.filterDate}
+                id="date"
+                onChange={this.handleFilter('dateBefore')}
+                value={this.state.dateBefore}
+              />
+            </label>
+            </>
         ):(<></>))
         return (
-          <div className="search-form-container">
+          <>
+          <div className="search-box-container" >
+              <div className="search-box-box" id="search-box">
+                <div className="search-box">
+                  <input type="text" 
+                        onClick={this.handleSearchBox.bind(this)} 
+                        className="search-placeholder" 
+                        placeholder="Start your search"/>
+                
+                <div className="search-icon">
+                    <i className="fa fa-search input-search-icon" aria-hidden="true"></i>    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="search-form-container" id="search-bar">
               <form className="search-form" onSubmit={this.handleSearch}>
                 <div>
                   <label 
@@ -61,6 +95,7 @@ class SearchNav extends React.Component{
                     <input
                       className="search-form-input"
                       id="origin"
+          
                       onChange={this.handleFilter("filterOrigin")}
                       value={this.state.filterOrigin}
                     />
@@ -88,6 +123,7 @@ class SearchNav extends React.Component{
                 />
               </form>
           </div>
+          </>
         );
     }
 }

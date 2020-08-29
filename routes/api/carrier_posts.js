@@ -60,15 +60,20 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req,res) =
 
 router.get('/', (req, res) => {
     const allPosts = {};
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 7);
+    const newDate = currentDate.toJSON().slice(0, 10);
     const search = JSON.parse(req.query.search);
     const filterOrigin = search["filterOrigin"] || '';
     const filterDestination = search["filterDestination"] || '';
     const filterDate = search["filterDate"] || new Date().toJSON().slice(0, 10);
-    const formatDate = new Date(filterDate); 
-    CarrierPost.find(
+    const dateBefore = search["dateBefore"] || newDate;
+    const formatDateAfter = new Date(filterDate); 
+    const formatDateBefore = new Date(dateBefore); 
+    CarrierPost.find( 
         {"origin": { "$regex": filterOrigin, "$options": "i" },
          "destination": { "$regex": filterDestination, "$options": "i" },
-         "travelDate": {$gte: formatDate}
+        "travelDate": { $gte: formatDateAfter, $lt: formatDateBefore}
             })
         .then(posts => {
             posts.forEach(post => {
@@ -137,8 +142,6 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
         })
         .catch(errors => res.send(errors));
         
-        
-    
 });
 
 
@@ -164,5 +167,40 @@ router.get('/user/:id', (req,res) => {
         .catch(err => res.json(err))
 });
 
+
+router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
+    const { errors, isValid } = validateBookingCreate(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+    let currentCarrierId;
+
+    CarrierPost.findById(req.params.id)
+        .then(post => {
+            currentCarrierId = post.carrierId;
+
+            const newBooking = new Booking({
+                carrierId: currentCarrierId,
+                shipperId: req.user.id,
+                carrierPostId: req.params.id,
+                parcelContents: req.body.parcelContents,
+                phone: req.body.phone        
+        
+            });
+        
+            newBooking.save()
+                .then(booking => res.json(booking))
+                .catch(errors => res.send(errors));
+        })
+        .catch(errors => res.send(errors));
+        
+        
+    
+});
+
+
+
+
+
 module.exports = router;
-// finished by george for post-carrier-model 8-11-2020

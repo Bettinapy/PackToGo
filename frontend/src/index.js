@@ -30,6 +30,39 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore({});
   }
   const root = document.getElementById("root");
-  
+
+  function runOnScroll() {
+    let searchBar = document.getElementById("search-bar");
+    let searchBox = document.getElementById("search-box")
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      if (searchBar){
+        if (!searchBar.classList.contains("hide-search")) {
+          searchBar.classList.add("hide-search")
+        }
+      }
+      if (searchBox){
+        if(searchBar){
+          if (searchBar.classList.contains("show-search")){
+            searchBar.classList.remove("show-search")
+          }
+        }
+        searchBox.classList.add("show-search")
+      }
+    } else {
+      if (searchBox) {
+        if(searchBox.classList.contains("show-search")){
+          searchBox.classList.remove("show-search")
+        }
+      }
+      if (searchBar) {
+        if (searchBar.classList.contains("hide-search")){
+          searchBar.classList.remove("hide-search")
+        }
+      }
+    }
+  }; 
+
+  window.addEventListener("scroll", runOnScroll);
+
   ReactDOM.render(<Root store={store} />, root);
 });

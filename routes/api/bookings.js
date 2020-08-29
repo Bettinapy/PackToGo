@@ -26,6 +26,7 @@ router.get('/:id', (req,res) => {
             fullObject.carrierId = booking.carrierId;
             fullObject.shipperId = booking.shipperId;
             fullObject.carrierPostId = booking.carrierPostId;
+            //fullObject.senderName = booking.shipperId.handle;
             fullObject.phone = booking.phone;
             User.findById(fullObject.carrierId)
                 .then(user => {
@@ -64,11 +65,17 @@ router.get('/', (req,res) => {
 
 });
 
+// router.get('/shipper/:id', (req,res) => {
+//     Booking.where({shipperId: req.params.id})
+//         .then(bookings => res.json(bookings))
+//         .catch(errors => res.json(errors))
+// })
+
 router.get('/shipper/:id', (req,res) => {
     Booking.where({shipperId: req.params.id}).populate('carrierPostId')
         .then(bookings => res.json(bookings))
         .catch(errors => res.json(errors))
-})
+}) 
 
 router.get('/carrier/:id', (req,res) => {
     Booking.where({carrierId: req.params.id})

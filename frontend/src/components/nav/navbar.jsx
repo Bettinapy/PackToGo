@@ -6,7 +6,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+        dropdownClass: "hidden"
     }
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
@@ -34,8 +34,8 @@ class NavBar extends React.Component {
       let link = role === 'shipper' ? '/shippers/posts/create' : '/carriers/posts/create'
       let search = role === 'shipper' ? '/carriers/posts/search' : '/shippers/posts/search'
       return (
-        <div className="navbar-user-container">
-          <div className="user-greeting" onClick={() => this.props.history.push(`/user`)}>Hi, {this.props.currentUser.handle}</div>
+        <div className="navbar-user-container" >
+          <div className="user-greeting">Hi, {this.props.currentUser.handle}</div>
           <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
           <Link className="navbar-button" to={link}>
             Create a post
@@ -58,9 +58,13 @@ class NavBar extends React.Component {
     }
   }
 
+  toggleDropdown() {
+    this.state.dropdownClass === "hidden" ? this.setState({dropdownClass: ""}) : this.setState({dropdownClass: "hidden"});
+  }
+
   render() {
     return (
-      <div className="navbar-main-container">
+      <div className="navbar-main-container" >
         <div className="navbar-left-container">
             <Link className="logo-link" to={"/"}>
             <img className="logo-img" src="https://minicram-dev.s3.amazonaws.com/images/packtogo-logo.png" alt="logo-img"/>
@@ -69,7 +73,13 @@ class NavBar extends React.Component {
         <div className="navbar-right-container">
             {this.getLinks()}
             <div className = "hamburger-container">
-              <button className="hamburger-button"><img src="https://minicram-dev.s3.amazonaws.com/images/menu.png" alt=""/></button>
+              <button onClick={()=>this.toggleDropdown()} className="hamburger-button">
+                <img src="https://minicram-dev.s3.amazonaws.com/images/menu.png" alt=""/>
+              </button>
+              <div className ={`hamburger-dropdown ${this.state.dropdownClass}`}>
+                  <div className = "hamburger-sublink-container"><Link to={"/signup"}>Sign up</Link></div>
+                  <div className = "hamburger-sublink-container"><Link to={"/login"}>Login</Link></div>
+              </div>
             </div>
         </div>
       </div>
