@@ -25,7 +25,7 @@ export const receiveUserShipperPosts = (userShipperPosts) => {
         type: RECEIVE_USER_SHIPPERPOSTS,
         userShipperPosts
     }
-}
+};
 
 export const removeShipperPost = (shipperPostId) => {
  

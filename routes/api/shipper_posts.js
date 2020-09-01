@@ -104,7 +104,8 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
 });
 
 router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
-    
+
+    let currentShipperId;
 
     ShipperPost.findById(req.params.id)
         .then(post => {

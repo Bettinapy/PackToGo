@@ -1,7 +1,8 @@
 import {
     RECEIVE_CARRIERPOSTS,
     RECEIVE_CARRIERPOST,
-    REMOVE_CARRIERPOST
+    REMOVE_CARRIERPOST,
+    RECEIVE_USER_CARRIERPOSTS
 } from '../actions/carrier_post_actions';
 
 const CarrierPostsReducer = (state={}, action) => {
@@ -11,6 +12,8 @@ const CarrierPostsReducer = (state={}, action) => {
     switch (action.type) {
         case RECEIVE_CARRIERPOSTS:
             return action.carrierPosts.data;
+        case RECEIVE_USER_CARRIERPOSTS:
+            return action.userCarrierPosts.data;
         case RECEIVE_CARRIERPOST:
             newState = Object.assign({}, state, {[action.carrierPost.data._id]: action.carrierPost.data });
             return newState;

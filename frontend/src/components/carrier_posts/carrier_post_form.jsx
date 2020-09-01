@@ -185,7 +185,7 @@ class CarrierPostForm extends React.Component {
                   <label 
                     className="post-form-label"
                     htmlFor="max-weight">
-                    Max Weight&#42;(g)
+                    Max Weight&#42;(lb)
                     <input
                       type="number"
                       min="1"

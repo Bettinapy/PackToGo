@@ -46,8 +46,6 @@ router.get('/:id', (req,res) => {
         })
         .catch(errors => res.json(errors))
     
-
-    
 });
 
 // bookings index route
@@ -78,7 +76,7 @@ router.get('/shipper/:id', (req,res) => {
 }) 
 
 router.get('/carrier/:id', (req,res) => {
-    Booking.where({carrierId: req.params.id})
+    Booking.where({carrierId: req.params.id}).populate('shipperPostId')
         .then(bookings => res.json(bookings))
         .catch(errors => res.json(errors))
 })

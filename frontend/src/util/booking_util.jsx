@@ -7,3 +7,4 @@ export const getBooking = (bookingId) => {
 export const getBookings = (role, userId) => {
   return axios.get(`/api/bookings/${role}/${userId}`);
 };
+

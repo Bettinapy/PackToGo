@@ -3,7 +3,6 @@ const CarrierPost = require('./Carrier_post');
 const ShipperPost = require('./Shipper_post');
 
 const Schema = mongoose.Schema;
-const CarrierPost = require('./Carrier_post');
 
 const BookingSchema = new Schema({
     carrierId: {

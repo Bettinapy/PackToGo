@@ -45,7 +45,7 @@ class CarrierPostShow extends React.Component {
     let bookingData = {};
     bookingData.parcelContents = this.state.parcelContents;
     bookingData.phone = this.state.phone;
-    this.props.createBooking(this.props.match.params.carrierPostId, bookingData)
+    this.props.createBooking("carrierPost", this.props.match.params.carrierPostId, bookingData)
       .then((action) => {
 
         if(action.bookingData){
@@ -144,7 +144,7 @@ class CarrierPostShow extends React.Component {
             {userAuth}
             <div className="submit-button-container" >
 
-              <button className="submit-button" onClick={this.toggleModal}>Booking</button>
+              <button className="submit-button" onClick={this.toggleModal}>Book</button>
             </div>
           </div>
         </div>

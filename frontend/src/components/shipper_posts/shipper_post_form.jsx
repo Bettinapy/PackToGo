@@ -106,7 +106,7 @@ class ShipperPostForm extends React.Component {
                   {parcelContentsErr}
 
                   <label className="post-form-label" htmlFor="max-weight">
-                    Max Weight&#42;(g)
+                    Max Weight&#42;(lb)
                     <input
                       type="number"
                       min="1"

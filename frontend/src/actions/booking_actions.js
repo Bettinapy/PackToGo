@@ -1,4 +1,5 @@
 import * as CarrierPostUtil from "../util/carrier_post_util";
+import * as ShipperPostUtil from "../util/shipper_post_util";
 import * as BookingUtil from "../util/booking_util";
 import { receiveSessionErrors } from "./session_actions";
 
@@ -38,12 +39,20 @@ export const fetchBookings = (role, userId) => {
 }
 
 
-export const createBooking = (carrierPostId, bookingData) => {
+export const createBooking = (type, postId, bookingData) => {
   return (dispatch) => {
-    return CarrierPostUtil.createBooking(carrierPostId, bookingData).then(
-      (booking) => dispatch(receiveBooking(booking)),
-      (err) => dispatch(receiveSessionErrors(err.response.data))
-    );
-        
+    if (type === "carrierPost") {
+      return CarrierPostUtil.createBooking(postId, bookingData)
+        .then(
+          (booking) => dispatch(receiveBooking(booking)),
+          (err) => dispatch(receiveSessionErrors(err.response.data))
+        );
+    } else {
+      return ShipperPostUtil.createBooking(postId)
+        .then(
+          (booking) => dispatch(receiveBooking(booking)),
+          (err) => dispatch(receiveSessionErrors(err.response.data))
+        );
+    }
   };
 };

@@ -146,25 +146,30 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
 
 
 
-router.get('/user/:id', (req,res) => {
-    const allUsersPosts = {};
-    let selectedUser;
+// router.get('/user/:id', (req,res) => {
+//     const allUsersPosts = {};
+//     let selectedUser;
     
-    User.findById(req.params.id)
-        .then(user => {
-            selectedUser = user;
-        })
+//     User.findById(req.params.id)
+//         .then(user => {
+//             selectedUser = user;
+//         })
     
-    //console.log(selectedUser.handle);
+//     //console.log(selectedUser.handle);
     
-    CarrierPost.find({carrierId: selectedUser})
-        .then(posts => {
-            posts.forEach(post => {
-                allPosts[post.id] = post;
-            })
-            res.json(allPosts)
-        })
-        .catch(err => res.json(err))
+//     CarrierPost.find({carrierId: selectedUser})
+//         .then(posts => {
+//             posts.forEach(post => {
+//                 allPosts[post.id] = post;
+//             })
+//             res.json(allPosts)
+//         })
+//         .catch(err => res.json(err))
+// });
+router.get('/user/:id', (req, res) => {
+    CarrierPost.where({ carrierId: req.params.id })
+        .then(posts => res.json(posts))
+        .catch(errors => res.json(errors))
 });
 
 

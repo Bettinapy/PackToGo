@@ -4,6 +4,7 @@ import { receiveSessionErrors } from "./session_actions";
 export const RECEIVE_CARRIERPOSTS = "RECEIVE_CARRIERPOSTS";
 export const RECEIVE_CARRIERPOST = "RECEIVE_CARRIERPOST";
 export const REMOVE_CARRIERPOST = "REMOVE_CARRIERPOST";
+export const RECEIVE_USER_CARRIERPOSTS = "RECEIVE_USER_CARRIERPOSTS";
 //export const REMOVE_CARRIERPOSTS = "REMOVE_CARRIERPOSTS";
 
 export const receiveCarrierPosts = (carrierPosts) => {
@@ -18,6 +19,13 @@ export const receiveCarrierPost = (carrierPost) => {
     type: RECEIVE_CARRIERPOST,
     carrierPost,
   };
+};
+
+export const receiveUserCarrierPosts = (userCarrierPosts) => {
+    return {
+        type: RECEIVE_USER_CARRIERPOSTS,
+        userCarrierPosts
+    }
 };
 
 export const removeCarrierPost = (carrierPostId) => {
@@ -42,6 +50,14 @@ export const fetchCarrierPost = (carrierPostId) => {
         return CarrierPostUtil.getCarrierPost(carrierPostId)
             .then((payload) => dispatch(receiveCarrierPost(payload)),
                   (err) => dispatch(receiveSessionErrors(err.response.data)))
+    }
+}
+
+export const fetchUserCarrierPosts = (userId) => {
+    return dispatch => {
+        return CarrierPostUtil.getUserCarrierPost(userId)
+            .then((payload) => dispatch(receiveUserCarrierPosts(payload)),
+                (err) => dispatch(receiveSessionErrors(err.response.data)))
     }
 }
 

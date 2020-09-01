@@ -35,7 +35,7 @@ class NavBar extends React.Component {
       let search = role === 'shipper' ? '/carriers/posts/search' : '/shippers/posts/search'
       return (
         <div className="navbar-user-container" >
-          <div className="user-greeting">Hi, {this.props.currentUser.handle}</div>
+          <div className="user-greeting" onClick={() => this.props.history.push('/user')}>Hi, {this.props.currentUser.handle}</div>
           <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
           <Link className="navbar-button" to={link}>
             Create a post

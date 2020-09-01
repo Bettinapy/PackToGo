@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import Modal from 'react-modal';
 import './shipper_post_list.scss';
 
 class ShipperPostShow extends React.Component{
@@ -7,10 +8,12 @@ class ShipperPostShow extends React.Component{
         super(props);
         this.state = this.props.shipper_post;
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleBooking = this.handleBooking.bind(this);
     }
 
     componentDidMount(){
-        this.props.fetchShipperPost(this.props.match.params.shipperPostId);
+      // Modal.setAppElement("body");
+      this.props.fetchShipperPost(this.props.match.params.shipperPostId);
     }
 
     componentWillMount(){
@@ -28,6 +31,17 @@ class ShipperPostShow extends React.Component{
             });
         }
     }
+
+    handleBooking(e) {
+      e.preventDefault();
+      this.props.createBooking("shipperPost", this.props.match.params.shipperPostId)
+        .then((action) => {
+          if (action) {
+            this.props.history.push(`/bookings/${action.bookingData.data._id}`)
+          }
+        });
+    }
+
     render(){
         const userAuth =
           this.props.currentUserId === this.props.shipper_post.shipperId ? (
@@ -46,7 +60,11 @@ class ShipperPostShow extends React.Component{
               </div>
             </>
           ) : (
-            <></>
+            <>
+              <div onClick={this.handleBooking}>
+                  <h1 className="submit-button">Book</h1>
+              </div>
+            </>
           );
       
 

@@ -23,5 +23,9 @@ export const deleteShipperPost = (shipperPostId) => {
 }
 
 export const getUserShipperPost = (userId) => {
-    return axios.get(`/api/shipper_posts/user/${userId}`)
+    return axios.get(`/api/shipper_posts/user/${userId}`);
+}
+
+export const createBooking = (shipperPostId) => {
+    return axios.post(`/api/shipper_posts/${shipperPostId}/book`);
 }

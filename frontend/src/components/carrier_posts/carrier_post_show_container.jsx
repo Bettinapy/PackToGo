@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchCarrierPost: (carrierPostId) => dispatch(fetchCarrierPost(carrierPostId)),
     deleteCarrierPost: (carrierPostId) => dispatch(deleteCarrierPost(carrierPostId)),
-    createBooking: (carrierPostId, bookingData) => dispatch(createBooking(carrierPostId, bookingData)),
+    createBooking: (type, postId, bookingData) => dispatch(createBooking(type, postId, bookingData)),
     clearErrors: () => dispatch(clearErrors()),
   };
 };
