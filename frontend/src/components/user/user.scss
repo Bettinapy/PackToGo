@@ -103,3 +103,26 @@ $pink: #FCC3BD;
 }
 
 .show {display: block;}
+
+@media screen and (max-width: 850px) {
+
+    .user-profile-container img {
+      margin: 0 auto;
+    }
+
+    .user-profile-container {
+        flex-direction: column;
+    }
+
+    .user-profile-information {
+      padding: 10px;
+    }
+
+    .user-profile-information h1 {
+        margin-bottom: 20px;
+    }
+
+    .user-profile-information div {
+        margin-bottom: 20px;
+    }
+}

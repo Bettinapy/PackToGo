@@ -10,13 +10,26 @@ class NavBar extends React.Component {
     }
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.getDropDownLinks = this.getDropDownLinks.bind(this);
+    this.hamburgerLinkClick();
   }
 
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
     this.props.history.push("/");
+    this.toggleDropdown();
   }
+
+  // componentDidMount() {
+  //   document.querySelectorAll('.hamburger-sublink').forEach(link => {
+  //     debugger;
+  //     return link.addEventListener('click', () => {
+  //       debugger;
+  //       return document.getElementById('menuDropdown').style.display = 'none';
+  //     })
+  //   });
+  // }
 
   getLinks() {
     const shipperIcon = (<img
@@ -37,20 +50,16 @@ class NavBar extends React.Component {
         <div className="navbar-user-container" >
           <div className="user-greeting" onClick={() => this.props.history.push('/user')}>Hi, {this.props.currentUser.handle}</div>
           <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
-          <Link className="navbar-button" to={link}>
-            Create a post
-          </Link>
+          <Link className="navbar-button" to={link}>Create a post</Link>
           <Link className="navbar-button" to={search}>Search</Link>
-          <button className="navbar-button" onClick={this.logoutUser}>
-            Log out
-          </button>
+          <button className="navbar-button" onClick={this.logoutUser}>Log out</button>
         </div>
       );
     } else {
         // switch (this.props.location.pathname) {
         //   case "/":
             return (
-              <div>
+              <div className="">
                 <Link className="navbar-button" to={"/signup"}>Sign up</Link>
                 <Link className="navbar-button" to={"/login"}>Login</Link>
               </div>
@@ -58,8 +67,49 @@ class NavBar extends React.Component {
     }
   }
 
+  getDropDownLinks() {
+
+    if (this.props.loggedIn) {
+      let role = this.props.currentUser.role;
+      let link = role === 'shipper' ? '/shippers/posts/create' : '/carriers/posts/create'
+      let search = role === 'shipper' ? '/carriers/posts/search' : '/shippers/posts/search'
+      return (
+        <div>
+          <div className="hamburger-sublink" onClick={() => {
+            this.toggleDropdown();
+            this.props.history.push('/user');}
+          }>Hi, {this.props.currentUser.handle}</div>
+          <div className="hamburger-sublink"><Link onClick={this.toggleDropdown} to={link} className="hamburger-sublink-text">Create a post</Link></div>
+          <div className="hamburger-sublink"><Link onClick={this.toggleDropdown} to={search} className="hamburger-sublink-text">Search</Link></div>
+          <button className="hamburger-sublink" onClick={this.logoutUser}>Log out</button>
+        </div>
+      )
+    } else {
+      return (
+        <div className="menu-links-container">
+          <Link onClick={this.toggleDropdown} className="hamburger-sublink" to={"/signup"}>Sign up</Link>
+          <Link onClick={this.toggleDropdown} className="hamburger-sublink" to={"/login"}>Login</Link>
+        </div>
+      )
+    }
+  }
+
   toggleDropdown() {
-    this.state.dropdownClass === "hidden" ? this.setState({dropdownClass: ""}) : this.setState({dropdownClass: "hidden"});
+    document.getElementById('menuDropdown').classList.toggle('show');
+  }
+
+  hamburgerLinkClick() {
+    // document.querySelectorAll('.hamburger-sublink').forEach(link => {
+    //   debugger;
+    //   return link.addEventListener('click', () => {
+    //     debugger;
+    //     return document.getElementById('menuDropdown').style.display = 'none';
+    //   })
+    // });
+    // const dropdownMenu = document.getElementById('menuDropdown');
+    // dropdownMenu.addEventListener('click', () => {
+    //   return dropdownMenu.style.display = 'none';
+    // });
   }
 
   render() {
@@ -71,14 +121,15 @@ class NavBar extends React.Component {
             </Link>
         </div>
         <div className="navbar-right-container">
+          <div className="non-hamburger-links">
             {this.getLinks()}
+          </div>
             <div className = "hamburger-container">
-              <button onClick={()=>this.toggleDropdown()} className="hamburger-button">
-                <img src="https://minicram-dev.s3.amazonaws.com/images/menu.png" alt=""/>
-              </button>
-              <div className ={`hamburger-dropdown ${this.state.dropdownClass}`}>
-                  <div className = "hamburger-sublink-container"><Link to={"/signup"}>Sign up</Link></div>
-                  <div className = "hamburger-sublink-container"><Link to={"/login"}>Login</Link></div>
+              <div className="menu-dropdown">
+                <img onClick={this.toggleDropdown} src="https://minicram-dev.s3.amazonaws.com/images/menu.png" className="hamburger-button" alt="menu"/>
+                <div className="menu-dropdown-content" id="menuDropdown">
+                      {this.getDropDownLinks()}
+                </div>
               </div>
             </div>
         </div>
