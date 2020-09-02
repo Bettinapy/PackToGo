@@ -15,12 +15,15 @@ import EditShipperPostFormContainer from './shipper_posts/edit_shipper_post_form
 import ShipperPostShowContainer from './shipper_posts/shipper_post_show_container';
 import ShipperPostListContainer from './shipper_posts/shipper_post_list_container';
 import BookingShowContainer from './bookings/booking_show_container';
+import UserShowContainer from './user/user_show_container';
 
 const App = () => (
   <div className="body-container">
     <NavBarContainer />
     <Switch>
+
       <Route exact path="/" component={MainPage} />
+      
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
@@ -29,6 +32,9 @@ const App = () => (
       <ProtectedRoute exact path="/shippers/posts/create" component={CreateShipperPostFormContainer} />
       <ProtectedRoute exact path="/shippers/posts/:shipperPostId/edit" component={EditShipperPostFormContainer} />
       <ProtectedRoute exact path="/bookings/:bookingId" component={BookingShowContainer} />
+      {/* <ProtectedRoute path="/bookings/shipper" component={BookingIndexContainer} />
+      <ProtectedRoute path="/bookings/carrier" component={BookingIndexContainer} /> */}
+      <ProtectedRoute path="/user" component={UserShowContainer} />
 
       <Route exact path="/carriers/posts/search" component={CarrierPostListContainer} />
       <Route exact path="/shippers/posts/search" component={ShipperPostListContainer} />       

@@ -296,6 +296,12 @@ $gray: #a0adbb;
     top: 30%;
     margin-right: 5px;
     margin-top: 5px;
+    cursor: pointer;
+}
+
+.user-greeting:hover {
+    font-size: 19px;
+    text-decoration: underline;
 }
 
 .carrier-search-label, 

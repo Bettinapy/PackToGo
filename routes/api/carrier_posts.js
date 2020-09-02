@@ -116,7 +116,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req,res
 
 router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,res) => {
     const { errors, isValid } = validateBookingCreate(req.body);
-
+    debugger;
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -124,6 +124,7 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
 
     CarrierPost.findById(req.params.id)
         .then(post => {
+
             currentCarrierId = post.carrierId;
 
             const newBooking = new Booking({
@@ -145,25 +146,30 @@ router.post('/:id/book', passport.authenticate('jwt', { session: false }), (req,
 
 
 
-router.get('/user/:id', (req,res) => {
-    const allUsersPosts = {};
-    let selectedUser;
+// router.get('/user/:id', (req,res) => {
+//     const allUsersPosts = {};
+//     let selectedUser;
     
-    User.findById(req.params.id)
-        .then(user => {
-            selectedUser = user;
-        })
+//     User.findById(req.params.id)
+//         .then(user => {
+//             selectedUser = user;
+//         })
     
-    //console.log(selectedUser.handle);
+//     //console.log(selectedUser.handle);
     
-    CarrierPost.find({carrierId: selectedUser})
-        .then(posts => {
-            posts.forEach(post => {
-                allPosts[post.id] = post;
-            })
-            res.json(allPosts)
-        })
-        .catch(err => res.json(err))
+//     CarrierPost.find({carrierId: selectedUser})
+//         .then(posts => {
+//             posts.forEach(post => {
+//                 allPosts[post.id] = post;
+//             })
+//             res.json(allPosts)
+//         })
+//         .catch(err => res.json(err))
+// });
+router.get('/user/:id', (req, res) => {
+    CarrierPost.where({ carrierId: req.params.id })
+        .then(posts => res.json(posts))
+        .catch(errors => res.json(errors))
 });
 
 

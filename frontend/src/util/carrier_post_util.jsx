@@ -27,3 +27,7 @@ export const createBooking = (carrierPostId, bookingData) => {
 
     return axios.post(`/api/carrier_posts/${carrierPostId}/book`, bookingData)
 }
+
+export const getUserCarrierPost = (userId) => {
+    return axios.get(`/api/carrier_posts/user/${userId}`);
+}

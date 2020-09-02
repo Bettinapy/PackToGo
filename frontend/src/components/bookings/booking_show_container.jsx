@@ -20,7 +20,6 @@ const mapStateToProps = (state, ownProps) => {
             fee:'',
             maxWeight:'',
             parcelContents: "",
-
           },
         currentUser,
     }

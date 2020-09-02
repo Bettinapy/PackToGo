@@ -16,7 +16,7 @@ ObjectId = Schema.ObjectId;
 // booking show route
 router.get('/:id', (req,res) => {
 
-    const fullObject = {}
+    const fullObject = {};
     
     Booking.findById(req.params.id)
         //.then(booking => res.json(booking))
@@ -43,11 +43,8 @@ router.get('/:id', (req,res) => {
                             res.json(fullObject);
                         })
                 })
-
         })
         .catch(errors => res.json(errors))
-    
-
     
 });
 
@@ -60,7 +57,7 @@ router.get('/', (req,res) => {
             bookings.forEach(booking => {
                 allBookings[booking.id] = booking;
             })
-            res.json(allBookings)
+            res.json(allBookings);
         })
         .catch(errors => res.json(errors))
 
@@ -79,7 +76,7 @@ router.get('/shipper/:id', (req,res) => {
 }) 
 
 router.get('/carrier/:id', (req,res) => {
-    Booking.where({carrierId: req.params.id})
+    Booking.where({carrierId: req.params.id}).populate('shipperPostId')
         .then(bookings => res.json(bookings))
         .catch(errors => res.json(errors))
 })
