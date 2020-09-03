@@ -65,7 +65,7 @@ class UserShow extends React.Component {
             });
         }
 
-        debugger;
+    
         return (
             <div className="user-container">
                 <div className="user-profile-container">

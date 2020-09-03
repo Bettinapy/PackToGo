@@ -4,7 +4,7 @@ export const BookingIndexListItem = ({ booking, currentUserRole }) => {
     let postIdType = null;
     let feeAndTransportationInfo = null;
     let travelDate = null;
-    if (currentUserRole === "shipper") {
+    if (currentUserRole === "shipper" && booking["carrierPostId"]){
         postIdType = "carrierPostId";
         travelDate = new Date(booking[postIdType].travelDate);
         feeAndTransportationInfo = () => {
