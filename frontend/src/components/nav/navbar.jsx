@@ -49,7 +49,7 @@ class NavBar extends React.Component {
       return (
         <div className="navbar-user-container" >
           <div className="user-greeting" onClick={() => this.props.history.push('/user')}>Hi, {this.props.currentUser.handle}</div>
-          <div>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
+          <div onClick={() => this.props.history.push('/user')}>{role === 'shipper' ? shipperIcon : carrierIcon}</div>
           <Link className="navbar-button" to={link}>Create a post</Link>
           <Link className="navbar-button" to={search}>Search</Link>
           <button className="navbar-button" onClick={this.logoutUser}>Log out</button>
